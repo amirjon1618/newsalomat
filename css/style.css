@@ -19433,9 +19433,11 @@ opacity: 0;
     border: 1px solid #e1e1e1;
     border-left: none;
     height: 44px !important;
-    box-shadow: none !important;
 }
 
+.header--standard .ps-form--quick-search input:focus {
+    border: 1px solid #33c6a5;
+}
 /******/
 /******/
 

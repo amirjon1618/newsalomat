@@ -1,2 +1,0 @@
-# newsalomat
-Salomat.TJ

@@ -368,6 +368,15 @@
 
                     <?php } ?>
 
+                    <?php if ($this->user->myData['access'] == 100 || $this->user->myData['access'] == 60) { ?>
+                        <li class="treeview">
+                            <a href="{base_url}index.php/Admin/notification">
+                                <i class="fa fa-bell" aria-hidden="true"></i> <span>Уведомления </span>
+                            </a>
+                        </li>
+
+                    <?php } ?>
+
 
                     <?php if ($this->user->myData['access'] == 100 && false) { ?>
 

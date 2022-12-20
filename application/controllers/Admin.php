@@ -183,6 +183,7 @@ class Admin extends CI_Controller
         $data['content'] = $this->parser->parse('admin/tag/list', $data, true);
         $this->template($data);
     }
+
     public function addTag()
     {
         if ($this->user->myData['access'] != 100)
@@ -214,9 +215,8 @@ class Admin extends CI_Controller
         }
     }
 
-
     /**
-     * List PromoCode
+     * List Notification
      *
      * @return void
      */
@@ -224,21 +224,138 @@ class Admin extends CI_Controller
     {
         if ($this->user->myData['access'] != 100)
             die();
-        $this->load->model("PromoCode");
+
+        $this->load->model("notification");
 
         $data = array("base_url" => base_url(), "alert" => "");
 
         if ($this->input->get("do") == "remove") {
-            $this->PromoCode->remove($this->input->get("id"));
+            $this->notification->remove($this->input->get("id"));
             $data['alert'] = $this->createAlertInfo('Данные успешно удалены');
         } else if ($this->input->get("do") == "addok") {
             $data['alert'] = $this->createAlertInfo('Данные успешно обновлены');
         }
 
-        $code = $this->PromoCode->get_all();
+        $code = $this->notification->get_all();
         $data['list'] = $code;
 
-        $data['content'] = $this->parser->parse('admin/promo_code/list', $data, true);
+        $data['content'] = $this->parser->parse('admin/notification/list', $data, true);
+        $this->template($data);
+    }
+
+    /**
+     * Added Notification
+     *
+     * @return void
+     */
+    public function addNotification()
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+        $this->load->model('notification');
+
+        $data = array("base_url" => base_url(), "alert" => "");
+        $now = date('Y-m-d H:i');
+        if ($this->input->post("AddBtn")) {
+            $config['upload_path'] = './img/icons/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|svg';
+            $config['encrypt_name'] = 'TRUE';
+            $config['max_size'] = '4500';
+            $config['max_width'] = '6000';
+            $config['max_height'] = '4000';
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload("userfile");
+            if ($this->upload->display_errors() != '') {
+                $data['alert'] = $this->createAlert($this->upload->display_errors());
+            }
+
+            $img = $this->upload->data();
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
+            $this->notification->add($dd);
+            redirect(base_url("index.php/admin/notification?do=addok"));
+
+        }
+        $data['content'] = $this->parser->parse('admin/notification/add', $data, true);
+        $this->template($data);
+    }
+
+    /**
+     * Updated Notification
+     * @param Int $id
+     * @return void
+     */
+    public function editNotification($id)
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+        $this->load->model("notification");
+        $data = array("base_url" => base_url(), "alert" => "");
+        $data['notification'] = $this->notification->get($id);
+        $now = date('Y-m-d H:i');
+        if ($this->input->post("AddBtn")) {
+            $config['upload_path'] = './img/icons/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|svg';
+            $config['encrypt_name'] = 'TRUE';
+            $config['max_size'] = '4500';
+            $config['max_width'] = '6000';
+            $config['max_height'] = '4000';
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload("userfile");
+            if ($this->upload->display_errors() != '') {
+                $data['alert'] = $this->createAlert($this->upload->display_errors());
+            }
+
+            $img = $this->upload->data();
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
+            $this->notification->update($id, $dd);
+            redirect(base_url("index.php/admin/notification?do=addok"));
+        }
+
+        $data['content'] = $this->parser->parse('admin/notification/edit', $data, true);
+
+        $this->template($data);
+    }
+
+    /**
+     * Updated Notification
+     * @param Int $id
+     * @return void
+     */
+    public function sendNotification($id)
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+        $this->load->model("notification");
+        $data = array("base_url" => base_url(), "alert" => "");
+        $data['notification'] = $this->notification->get($id);
+        $now = date('Y-m-d H:i');
+        if ($this->input->post("AddBtn")) {
+            $config['upload_path'] = './img/icons/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|svg';
+            $config['encrypt_name'] = 'TRUE';
+            $config['max_size'] = '4500';
+            $config['max_width'] = '6000';
+            $config['max_height'] = '4000';
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload("userfile");
+            if ($this->upload->display_errors() != '') {
+                $data['alert'] = $this->createAlert($this->upload->display_errors());
+            }
+
+            $img = $this->upload->data();
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
+            $this->notification->update($id, $dd);
+            redirect(base_url("index.php/admin/notification?do=addok"));
+        }
+
+        $data['content'] = $this->parser->parse('admin/notification/edit', $data, true);
+
         $this->template($data);
     }
 
@@ -350,6 +467,7 @@ class Admin extends CI_Controller
         $data['content'] = $this->parser->parse('admin/blog/list', $data, true);
         $this->template($data);
     }
+
     public function addBlog()
     {
         if ($this->user->myData['access'] != 100)
@@ -374,6 +492,7 @@ class Admin extends CI_Controller
             redirect(base_url("index.php/admin/blogs?do=addok"), "refresh");
         }
         $data['content'] = $this->parser->parse('admin/blog/add', $data, true);
+
         $this->template($data);
     }
 
@@ -442,8 +561,6 @@ class Admin extends CI_Controller
             echo json_encode(1);
         }
     }
-
-
 
     public function Admins()
     {

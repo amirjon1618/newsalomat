@@ -164,14 +164,14 @@
                                     </svg>
                                 </label>
                                 <div class="ps-product__thumbnail ">
-                                    <a href="{base_url}index.php/main/product/<?= $cat_p['id'] ?>">
+                                    <a href="{base_url}main/product/<?= $cat_p['id'] ?>">
                                         <img class="category_imgs" src="<?= $cat_p['base_url'] ?>upload_product/<?= $cat_p['product_pic'] ?>" alt="">
                                     </a>
                                 </div>
                                 <div class="ps-product__container">
                                     <div class="ps-product__content" data-mh="garden">
                                         <a class="ps-product__title product_title_new
-                                        " href="{base_url}index.php/main/product/<?= $cat_p['id'] ?>"><?= $cat_p['product_name'] ?></a>
+                                        " href="{base_url}main/product/<?= $cat_p['id'] ?>"><?= $cat_p['product_name'] ?></a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
                                                 <?php if ($cat_p['review_count'] != 0) : ?>
@@ -210,7 +210,7 @@
                                         <li class="breadcrumb-item ba-first">
                                             <h3>Блог </h3>
                                         </li>
-                                        <a href="{base_url}index.php/main/blogpopular">
+                                        <a href="{base_url}main/blogpopular">
                                             <li class="active ba-last" aria-current="page" style="padding: 0 10px;">все статьи ></li>
                                         </a>
                                     </ol>

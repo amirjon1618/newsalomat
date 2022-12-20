@@ -443,7 +443,6 @@ class Main extends CI_Controller
         echo json_encode($res);
     }
 
-
     public function searchProductResult()
     {
         $data = array('base_url' => base_url());
@@ -469,7 +468,6 @@ class Main extends CI_Controller
         $data['name'] =  $user['name'] ?? null;
         $data['image'] =  $user['image'] ?? null;
         $data['email'] =  $user['email'] ?? null;
-
 
         $data['header'] = $this->parser->parse('parts/header', $data, TRUE);
         $data['footer'] = $this->parser->parse('parts/footer', $data, TRUE);
@@ -632,7 +630,8 @@ class Main extends CI_Controller
         $res = $this->product->search_for_prod(
             $this->input->get("srch_pr_inp"),
             $this->input->get("min_price"),
-            $this->input->get("max_price")
+            $this->input->get("max_price"),
+            $user_id = $this->session->userdata('user_id')
         );
         unset($res['srch_prod_max_pr']);
         // print_r($res);

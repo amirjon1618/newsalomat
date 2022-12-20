@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
-| -------------------------------------------------------------------
+| ------------------------------------------------------------- ------
 | This file will contain the settings needed to access your database.
 |
 | For complete instructions please consult the 'Database Connection'
@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'salomattj',
+	'database' => 'salomat',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
