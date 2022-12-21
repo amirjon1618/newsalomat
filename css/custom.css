@@ -1224,7 +1224,7 @@ button {
 }
 
 .recipe_phone_div {
-   padding: 45px 140px;
+   /* padding: 45px 140px; */
    /* border: 1px solid #e3dede; */
    /* box-shadow: 0 2px 3px 0 rgba(108, 108, 108, 0.17); */
    border-radius: 7px;
@@ -1236,6 +1236,7 @@ button {
 
 #recipe_div_phone {
    display: none;
+   width: 33%;
 }
 
 #recipe_phone_div_phone_code {
@@ -1304,7 +1305,7 @@ button {
    border-radius: 7px;
    height: 38px;
    width: 100%;
-   padding-left: 80px;
+   padding-left: 60px;
 }
 
 .recipe_phone_div_inp input:focus {
@@ -1332,7 +1333,6 @@ button {
 .recipe_phone_div_inp span {
    position: absolute;
    left: 0px;
-   background: #e3e3e3;
    padding: 12px;
    border-radius: 7px;
    display: flex;

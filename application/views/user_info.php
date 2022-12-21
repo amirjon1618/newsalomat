@@ -11,7 +11,7 @@
                     <form class="form-detail">
                         <div class="tabcontent" id="sign-pass">
                             <div class="form-row-last d-flex justify-content-center">
-                                <a href="#user-info" id="ok-btn" class="ok-btn" onclick="javascript:window.location.hash = '#user-save';window.location.reload()">OK</a>
+                                <a href="#user-info" id="ok-btn" class="ok-btn" onclick="javascript:window.location.hash = '#user-save'; window.location.reload()">OK</a>
                             </div>
                         </div>
                     </form>
@@ -78,11 +78,11 @@
                                         <form action="{base_url}users/update_user_web" method="post" class="up-content-info_form">
                                             <div class="form-input col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-col">
-                                                    <label>Имя Фамилия <span class="red-star">*</span></label>
+                                                    <label>Имя Фамилия <span class="red-star"> *</span></label>
                                                     <input class="form-control" maxlength="24" required name="name" value="<?php echo $name ?>" id="order_name" type="text" placeholder="Имя Фамилия">
                                                 </div>
                                                 <div class="form-col">
-                                                    <label for="validationCustom02">Номер телефона <span class="red-star">*</span></label>
+                                                    <label for="validationCustom02">Номер телефона <span class="red-star"> *</span></label>
                                                     <input type="tel" title="Изменить номер телефона на вкладке (Изменить телефон)" class="form-control" id="validationCustom02" readonly name="login" placeholder="+992 XXX XX XX XX" required value="<?php echo $phone ?>">
                                                 </div>
                                                 <div class="form-col">
@@ -115,7 +115,7 @@
                                                     <input type="text" class="form-control" id="validationTooltipUsername" name="email" placeholder="youraddress@mail.ru" aria-describedby="validationTooltipUsernamePrepend" value="<?php echo $email ?>">
                                                 </div>
                                                 <div class="form-col">
-                                                    <label for="validationCustom03">Адресс <span class="red-star">*</span></label>
+                                                    <label for="validationCustom03">Адресс <span class="red-star"> *</span></label>
                                                     <input type="text" class="form-control" id="validationTooltiAddress" name="address" placeholder="А.Навои 34/2" aria-describedby="validationTooltipAddress" value="<?php echo $address ?>" required>
                                                 </div>
                                             </div>
@@ -164,23 +164,23 @@
                                                                 $price = 0;  ?></td>
 
                                                             <td style="width: 170px;"><span class="label" style="display: flex; justify-content: center; padding: 5px 0px;color: #fff; display: flex; text-align: center; background:<?php
-                                                                                                                                                                                                                                        if ($order['status'][0]->status_text == 'В ожидании') {
-                                                                                                                                                                                                                                            echo '#ffcc00';
-                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                        if ($order['status'][0]->status_text == 'Доставлен') {
-                                                                                                                                                                                                                                            echo '#18e364';
-                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                        if ($order['status'][0]->status_text == 'Отменен') {
-                                                                                                                                                                                                                                            echo '#eb1414';
-                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                        if ($order['status'][0]->status_text == 'Не подтвержён') {
-                                                                                                                                                                                                                                            echo '#c4c4c4';
-                                                                                                                                                                                                                                        };
-                                                                                                                                                                                                                                        if ($order['status'][0]->status_text == 'На обработку') {
-                                                                                                                                                                                                                                            echo '#9814eb';
-                                                                                                                                                                                                                                        };
+                                                                if ($order['status'][0]->status_text == 'В ожидании') {
+                                                                    echo '#ffcc00';
+                                                                };
+                                                                if ($order['status'][0]->status_text == 'Доставлен') {
+                                                                    echo '#18e364';
+                                                                };
+                                                                if ($order['status'][0]->status_text == 'Отменен') {
+                                                                    echo '#eb1414';
+                                                                };
+                                                                if ($order['status'][0]->status_text == 'Не подтвержён') {
+                                                                    echo '#c4c4c4';
+                                                                };
+                                                                if ($order['status'][0]->status_text == 'На обработку') {
+                                                                    echo '#9814eb';
+                                                                };
 
-                                                                                                                                                                                                                                        ?>; border-radius:.5em"><?= $order['status'][0]->status_text; ?></span></td>
+                                                                ?>; border-radius:.5em"><?= $order['status'][0]->status_text; ?></span></td>
                                                             <!-- <td><span class="status-delivered"><?php echo $order['status'][0]->status_text; ?></span></td> -->
                                                             <?php foreach ($order['products'] as $product) : ?>
                                                                 <?php $price = $price + $product->product_sold_price ?>
@@ -325,15 +325,14 @@
                                             <form class="up-content-info_pass" id="changePass">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-col col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
-                                                        <label for="exampleInputPassword1">Пароль*</label>
-                                                        <input type="password" class="form-control form-control-save error" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" name="password" id="first-validate" placeholder="Введите новый пароль" required>
+                                                        <label for="exampleInputPassword1">Пароль<span class="red-star"> *</span></label>
+                                                        <input type="password" class="form-control form-control-save" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" name="password" id="first-validate" placeholder="Введите новый пароль" required>
                                                     </div>
                                                     <div class="form-col col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                        <label for="exampleInputPassword2">Повторите пароль*</label>
-                                                        <input type="password" class="form-control form-control-save error" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" name="password_confirm" id="second-validate" placeholder="Введите повторно пароль" required>
+                                                        <label for="exampleInputPassword2">Повторите пароль<span class="red-star"> *</span></label>
+                                                        <input type="password" class="form-control form-control-save" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" name="password_confirm" id="second-validate" placeholder="Введите повторно пароль" required>
                                                     </div>
                                                     <p class="validate-text validate-text4"></p>
-
                                                     <button class="form-btn my-4 mx-3">Сохранить</button>
                                                 </div>
                                             </form>
@@ -347,12 +346,13 @@
                                         <h2>Изменит телефон</h2>
                                     </div>
                                     <div class="user-phone-content">
-                                        <form class="up-content-info_form" id="changePhone">
+                                        <form class="up-content-info_form8" id="changePhone">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-col col-lg-12 col-md-12 col-sm-12 col-xs-12" id="save-form">
-                                                    <label for="validationCustom02">Новый номер*</label>
+                                                    <label for="validationCustom02">Новый номер<span class="red-star"> *</span></label>
                                                     <span class="phone-mask-cabinet">+992</span>
-                                                    <input type="number" style="padding-left: 50px" maxlength="9" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" id="validationPhone" name="login" placeholder="Введите свой номер без +992" required value="<?php echo $phone ?>">
+                                                    <input type="number" style="padding-left: 50px" maxlength="9" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" id="validationPhone" name="login" placeholder="Введите свой номер" required value="<?php echo $phone ?>">
+                                                    <p class="validate-text validate-text4"></p>
                                                     <button class="form-btn my-4">Изменить</button>
                                                 </div>
                                             </div>
@@ -386,19 +386,68 @@
             rules: {
                 name: {
                     required: true,
-                    maxlength: 80,
+                    maxlength: 64,
                     minlength: 3
                 }
             },
 
         });
+
+        $('.up-content-info_pass').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+        $(".enter-btn-password").css("display", "block")
+                form.submit();
+            }
+
+        });
+
+        $('.up-content-info_form8').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 9,
+                    minlength: 9
+                }
+            },
+            submitHandler:function(form){
+                if ($("#validationPhone").val() !== localStorage.getItem("ver-number")) {
+                    onPsBlockRight();
+                    $(".efr1").css("display", "none");
+                    $(".efr8").css("display", "block");
+                    userTimer();
+                  localStorage.setItem("ver-number", Number($("#validationPhone").val()))
+                $.ajax({
+                    type: "POST",
+                    url: "{base_url}/users/resend_sms",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    data: {
+                        phone: Number(localStorage.getItem("ver-number"))
+                    },
+                    success(result) {
+                        localStorage.setItem("res-sms", result);
+                    }
+            })
+
+        }
+                return false;
+            }
+        });
     }
     validate_chekout();
 
-
-    $(".up-content-info_pass").on('submit', () => {
-        $(".enter-btn-password").css("display", "block")
-    })
+    // $(".up-content-info_pass").on('submit', () => {
+    // })
 
     function onRemoveLS() {
         localStorage.removeItem("userId");
@@ -418,38 +467,17 @@
             $(".validate-text").text("");
         }
     })
-    $("#first-validate").on('input', () => {
-        if ($("#first-validate").val() !== $("#second-validate").val()) {
-            $(".validate-text").text("Пароли не совпадают");
-        } else {
-            $(".validate-text").text("");
-        }
-    })
+    // $("#first-validate").on('input', () => {
+    //     if ($("#first-validate").val() !== $("#second-validate").val()) {
+    //         $(".validate-text").text("Пароли не совпадают");
+    //     } else {
+    //         $(".validate-text").text("");
+    //     }
+    // })
 
     $("#changePhone").on("submit", (e) => {
-        e.preventDefault()
-        if ($("#validationPhone").val() !== localStorage.getItem("ver-number")) {
-            onPsBlockRight();
-            $(".efr1").css("display", "none");
-            $(".efr8").css("display", "block");
-            userTimer();
-            localStorage.setItem("ver-number", Number($("#validationPhone").val()))
-            $.ajax({
-                type: "POST",
-                url: "{base_url}/users/resend_sms",
-                headers: {
-                    "Accept": "application/json",
-                },
-                data: {
-                    phone: Number(localStorage.getItem("ver-number"))
-                },
-                success(result) {
-                    localStorage.setItem("res-sms", result);
-
-                }
-            })
-
-        }
+        e.preventDefault();
+       
     })
     $("#changePass").on("submit", (e) => {
         e.preventDefault()

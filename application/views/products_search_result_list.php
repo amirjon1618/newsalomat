@@ -66,7 +66,7 @@
                     $char = "\"";
                     $charHtml = "&quot;";
                     ?>
-                    <div class="favorite-cart_btn">
+                    <div class="favorite-cart_btn likeClick">
                         <label class="like-button">
                             <input value="<?php $cat_p['id'] ?>" <?php echo $cat_p['is_favorite'] == 1 ?  'checked' : null  ?> type="checkbox" id="red">
                             <svg id="shape" fill="none" data-id="<?= $cat_p['id']   ?>" data-like="0" class="likeClick" width="24" height="24" style="cursor: pointer; float: right;" viewBox="0 0 22 19" xmlns="http://www.w3.org/2000/svg">

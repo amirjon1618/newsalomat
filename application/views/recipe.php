@@ -3,16 +3,18 @@
         <h3 class="recipe_header">Расшифровка рецепта</h3>
         <h5>Укажите номер для отправки Вам ответа.</h5>
         <div class="recipe_phone_div" id="recipe_phone_div_phone_number" style="text-align: center;">
-            <form id="formSms">
+            <form id="formSms" class="recipe-validate">
                 <div class="recipe_phone_div_inp">
                     <h5 class="mb-3">Введите номер телефона</h5>
                     <span>+992</span>
                     <input class="recipe_phone_number form-control" type="text" pattern="[0-9]+" title="987654321" required type="number" minlength="9" maxlength="9" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="order_phone" name="cell_phone" placeholder="Введите свой номер">
                 </div>
+                <p class="validate-text validate-text4"></p>
                 <h5 class="recipe_error_msg_code">Введите 9 цифр</h5>
                 <div class="recipe_name_div_inp py-3">
                     <input class="recipe_name form-control" minlength="3" maxlength="24" pattern="[A-Za-zА-Яа-я]+" title="Русские или английские буквы" required name="name" id="order_name" type="text" placeholder="Имя Фамилия">
                 </div>
+                <p class="validate-text validate-text4"></p>
                 <div class="recipe_comment_div_inp pb-3">
                     <textarea class="recipe_comment form-control" minlength="3" maxlength="250" name="comment" id="order_comment" type="text" placeholder="Комментарий"></textarea>
                 </div>
@@ -236,7 +238,7 @@
             $('.recipe_error_msg').show();
         }
     }
-
+    
     function begin() {
         $('#not_received_sms').hide();
         $('#recend_timer_sms').show();
@@ -353,4 +355,19 @@
         $('.recipe_phone_number').val('');
         removeAll();
     });
+    
+    function validate_chekout() {
+        $('.recipe-validate').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+
+        });
+    }
+    validate_chekout();
 </script>

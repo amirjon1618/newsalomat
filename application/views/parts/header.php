@@ -333,7 +333,7 @@
                                         <div class="form-row user-phone">
                                             <span class="text-label">Введите код из смс</span>
                                             <label class="form-row-inner">
-                                                <input type="number" style="padding-left: 50px" name="tel-number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" minlength="4" id="ver-sms2" class="input-text" required placeholder=" __ __ __ __ ">
+                                                <input type="number" name="tel-number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" minlength="4" id="ver-sms2" class="input-text" required placeholder=" __ __ __ __ ">
                                                 <span class="border"></span>
                                             </label>
                                         </div>

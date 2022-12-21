@@ -291,7 +291,7 @@
             rules: {
                 name: {
                     required: true,
-                    maxlength: 80,
+                    maxlength: 64,
                     minlength: 3
                 },
                 address: {
