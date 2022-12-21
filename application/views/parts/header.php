@@ -169,10 +169,11 @@
                                             <span class="text-label">Телефон</span>
                                             <label class="form-row-inner recipe_phone_div_inp recipe_phone_span">
                                             <span class="phone-mask">+992</span>
-                                                <input type="number" style="padding-left: 50px" min="9" title="987654321" name="restore-sms" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" minlength="9" maxlength="9" id="tel-number" class="input-text recipe_phone_number" required placeholder=" Введите свой номер">
+                                                <input type="number" style="padding-left: 50px" min="9" name="restore-sms" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" minlength="9" maxlength="9" id="tel-number" class="input-text form-detail_validate" required placeholder=" Введите свой номер">
                                                 <span class="border"></span>
                                             </label>
                                         </div>
+                                        <p class="validate-text validate-text4"></p>
                                         <div class="form-row-last d-grid">
                                             <a href="#" style="width: 100%;"><input type="submit" name="enter" class="enter-main ef1 enter-reg_btn main-enter_btn" value="Вход или  регистрация"></a>
                                         </div>
@@ -190,7 +191,7 @@
                                         <div class="form-row">
                                             <span class="text-label">Пароль</span>
                                             <label class="form-row-inner position-relative">
-                                                <input type="password" data-active="0" name="password" id="enter-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" class="input-text hide-pass" required placeholder="* * * * * * * * * *">
+                                                <input type="password" data-active="0" name="password" id="enter-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" class="input-text hide-pass form-detail_validate" required placeholder="* * * * * * * * * *">
                                                 <div class="hide-btn-pass">
                                                     <img src="{base_url}img/show-pass.svg" alt="Icon" id="hidePass1">
                                                 </div>
@@ -268,7 +269,7 @@
                                         <div class="form-row">
                                             <span class="text-label">Пароль</span>
                                             <label class="form-row-inner position-relative">
-                                                <input type="password" name="password" id="first-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" class="input-text hide-pass2" required placeholder="* * * * * * * * * *">
+                                                <input type="password" name="password" id="first-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" class="input-text hide-pass2" required placeholder="* * * * * * * * * *">
                                                 <div class="hide-btn-pass" data-active="0">
                                                     <img src="{base_url}img/show-pass.svg" alt="Icon" id="hidePass2">
                                                 </div>
@@ -277,7 +278,7 @@
                                         <div class="form-row">
                                             <span class="text-label">Повторный пароль</span>
                                             <label class="form-row-inner position-relative">
-                                                <input type="password" name="password" id="second-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" class="input-text hide-pass3" required placeholder="* * * * * * * * * *">
+                                                <input type="password" name="password" id="second-password" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$"  pattern="^[a-zA-Z0-9]+$" class="input-text hide-pass3" required placeholder="* * * * * * * * * *">
                                                 <div class="hide-btn-pass" data-active="0">
                                                     <img src="{base_url}img/show-pass.svg" alt="Icon" id="hidePass3">
                                                 </div>
@@ -311,7 +312,7 @@
                                             <span class="text-label">Телефон</span>
                                             <label class="form-row-inner">
                                                 <span class="phone-mask">+992</span>
-                                                <input type="number" style="padding-left: 50px" min="9" name="tel-number" id="errorPhone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9" class="input-text recipe_phone_number" required placeholder=" Введите свой номер">
+                                                <input type="number" style="padding-left: 50px" min="9" name="tel-number" id="errorPhone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="9" class="input-text form-detail_validate" required placeholder=" Введите свой номер">
                                                 <span class="border"></span>
                                             </label>
                                         </div>
@@ -369,7 +370,7 @@
                                         <div class="form-row">
                                             <span class="text-label">Пароль</span>
                                             <label class="form-row-inner position-relative">
-                                                <input type="password" name="password" id="first-password2" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" class="input-text hide-pass2" required placeholder="* * * * * * * * * *">
+                                                <input type="password" name="password" id="first-password2" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$"  class="input-text hide-pass2" required placeholder="* * * * * * * * * *">
                                                 <div class="hide-btn-pass" data-active="0">
                                                     <img src="{base_url}img/show-pass.svg" alt="Icon" id="hidePass4">
                                                 </div>
@@ -378,7 +379,7 @@
                                         <div class="form-row">
                                             <span class="text-label">Повторный пароль</span>
                                             <label class="form-row-inner position-relative">
-                                                <input type="password" name="password" id="second-password2" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" title="только английские буквы и цифры" class="input-text hide-pass3" required placeholder="* * * * * * * * * *">
+                                                <input type="password" name="password" id="second-password2" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" class="input-text hide-pass3" required placeholder="* * * * * * * * * *">
                                                 <div class="hide-btn-pass" data-active="0">
                                                     <img src=" {base_url}img/show-pass.svg" alt="Icon" id="hidePass5">
                                                 </div>
@@ -789,427 +790,10 @@
         </div>
     </div>
 </body>
-<style>
-    .enter-btn-bg {
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 10000;
-        background: red;
-        width: 100vw;
-        height: 100vh;
-        background: #a8a8a8a8;
-        transition: 1000ms;
-        display: none;
-    }
 
-    .ver-form {
-        display: none;
-    }
-
-    .pass-form {
-        display: none;
-    }
-
-    .user-phone {}
-
-    .verification-form {
-        position: absolute;
-    }
-
-    .active-animation {
-        animation: showOpacity 0.3s forwards alternate linear;
-    }
-
-    .disactive-animation {
-        animation: hideOpacity 0.3s forwards alternate linear;
-    }
-
-    @keyframes showOpacity {
-        from {
-            opacity: 0.3;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes hideOpacity {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
-    }
-
-    body {
-        margin: 0;
-    }
-
-    input[type=number]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
-
-    .page-content {
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        display: -webkit-flex;
-        justify-content: center;
-        -o-justify-content: center;
-        -ms-justify-content: center;
-        -moz-justify-content: center;
-        -webkit-justify-content: center;
-        align-items: center;
-        -o-align-items: center;
-        -ms-align-items: center;
-        -moz-align-items: center;
-        -webkit-align-items: center;
-    }
-
-    .form-v8-content {
-        background: #fff;
-        border-radius: 8px;
-        -o-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        margin: 177px 0;
-        font-family: 'Source Sans Pro', sans-serif;
-        color: #444444;
-        position: relative;
-        display: flex;
-        display: -webkit-flex;
-    }
-
-    .form-v8-content .form-left {
-        margin-bottom: -4px;
-    }
-
-    .form-v8-content .form-left img {
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-    }
-
-    .form-v8-content .enter-form {
-        position: relative;
-        width: 100%;
-        background: #fff;
-        border-radius: 5px;
-    }
-
-    .form-v8-content .tab {
-        margin: 5px 0 26px;
-        width: 100%;
-        display: flex;
-        display: -webkit-flex;
-        justify-content: space-between;
-        -o-justify-content: space-between;
-        -ms-justify-content: space-between;
-        -moz-justify-content: space-between;
-        -webkit-justify-content: space-between;
-    }
-
-    .form-check {
-        padding: 10px 0 20px 0;
-    }
-
-    .form-v8-content .tab .tab-inner {
-        width: 100%;
-    }
-
-    .form-v8-content .tab .tablinks {
-        background: transparent;
-        border: none;
-        outline: none;
-        -o-outline: none;
-        -ms-outline: none;
-        -moz-outline: none;
-        -webkit-outline: none;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 26px;
-        font-weight: 400;
-        color: #444;
-        border-bottom: 3px solid;
-        border-bottom-color: rgba(255, 255, 255, 0.2);
-        width: 100%;
-    }
-
-    .form-v8-content .tab .tablinks.active {
-        font-weight: 500;
-        color: #444444;
-        border-bottom-color: #4a4ac3;
-    }
-
-    .form-v8-content .form-row {
-        width: 100%;
-        position: relative;
-        display: block;
-    }
-
-    .form-v8-content .form-row .form-row-inner {
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-
-    .form-v8-content .form-row .form-row-inner .label {
-        position: absolute;
-        top: -2px;
-        left: 10px;
-        font-size: 18px;
-        color: #a8a8a8;
-        padding: 10px;
-        font-weight: 400;
-        transform-origin: 0 0;
-        transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -webkit-transition: all .2s ease;
-        -o-transition: all .2s ease;
-        -ms-transition: all .2s ease;
-    }
-
-    .forgot-pass_a a {
-        color: #1EBEBE;
-    }
-
-    .text-label {
-        padding: 10px 0;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
-        color: #A8A8A8;
-    }
-
-    .form-check {
-        display: inline-block;
-    }
-
-    .form-check-input {
-        display: flex;
-        width: 20px !important;
-        margin: 0 5px 5px 0;
-    }
-
-    .form-check-input:focus {
-        box-shadow: none;
-    }
-
-    .form-check-label {
-        padding: 0 30px;
-        color: #A8A8A8;
-    }
-
-    .form-v8-content .form-row .form-row-inner .border {
-        position: absolute;
-        bottom: 31px;
-        left: 0;
-        height: 1px;
-        width: 100%;
-        background: #53c83c;
-        transform: scaleX(0);
-        -moz-transform: scaleX(0);
-        -webkit-transform: scaleX(0);
-        -o-transform: scaleX(0);
-        -ms-transform: scaleX(0);
-        transform-origin: 0 0;
-        transition: all .15s ease;
-        -moz-transition: all .15s ease;
-        -webkit-transition: all .15s ease;
-        -o-transition: all .15s ease;
-        -ms-transition: all .15s ease;
-    }
-
-    .form-v8-content .form-detail .input-text {
-        border: 1px solid #E0E0E0;
-        border-radius: 3px;
-        height: 45px;
-        width: 350px;
-        padding: 5px 0 0 20px;
-    }
-    .form-v8-content .form-detail .input-text {
-        border: 1px solid #E0E0E0;
-        border-radius: 3px;
-        height: 45px;
-        width: 350px;
-        padding: 5px 0 0 20px;
-    }
-
-    .form-v8-content .form-detail input {
-        width: 100%;
-        border-bottom-color: rgba(255, 255, 255, 0.2);
-        background: transparent;
-        color: #333;
-    }
-
-    .enter-reg_btn {
-        margin-right: 0 !important;
-        width: 350px !important;
-    }
-
-    .form-v8-content .form-detail .enter {
-        background: #1EBEBE;
-        border-radius: 5px;
-        color: #fff;
-        width: 160px;
-        height: 44px;
-        border: none;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 18px;
-    }
-
-    .form-v8-content .form-detail .register {
-        border-radius: 5px;
-        border: 1px solid #1EBEBE !important;
-        color: #1EBEBE;
-        width: 160px;
-        height: 44px;
-        border: none;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 18px;
-    }
-
-    .form-v8-content .form-detail .enter-main {
-        width: 100% !important;
-        background: #1EBEBE;
-        border-radius: 5px;
-        color: #fff;
-        height: 44px;
-        border: none;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 18px;
-    }
-
-    .form-v8-content .form-detail .enter:hover {
-        background: #18A1A1;
-        border-radius: 5px;
-        color: #fff;
-    }
-
-    .form-v8-content .form-detail .register:hover {
-        background: #1EBEBE;
-        color: #fff;
-    }
-
-    .main-enter_btn {
-        width: 100% !important;
-    }
-
-    /* Responsive */
-    @media screen and (max-width: 991px) {
-        .form-v8-content {
-            margin: 180px 20px;
-            flex-direction: column;
-            -o-flex-direction: column;
-            -ms-flex-direction: column;
-            -moz-flex-direction: column;
-            -webkit-flex-direction: column;
-        }
-
-        .form-v8-content .form-left {
-            width: 100%;
-        }
-
-        .form-v8-content .form-left img {
-            width: 100%;
-            border-bottom-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        .form-v8-content .enter-form {
-            width: auto;
-            border-top-right-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-
-        .form-v8-content .tab {
-            margin-top: 45px;
-        }
-
-        .form-v8-content .form-detail .register {
-            margin-bottom: 0px;
-        }
-    }
-
-    @media screen and (max-width: 325px) {
-        .form-v8-content .tab {
-            flex-direction: column;
-            -o-flex-direction: column;
-            -ms-flex-direction: column;
-            -moz-flex-direction: column;
-            -webkit-flex-direction: column;
-        }
-    }
-
-    .enter-btn-phone {
-        padding: 45px;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 10000;
-        width: 100vw;
-        height: 100vh;
-        transition: 1000ms;
-        display: none;
-
-    }
-
-    .enter-btn-password {
-        padding: 45px;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 10000;
-        width: 100vw;
-        height: 100vh;
-        transition: 1000ms;
-        display: none;
-
-    }
-
-    .enter-form_pass {
-        box-shadow: 5px 5px 5px 5px #e5e5e5;
-        padding: 20px 40px;
-        border-radius: 5px;
-    }
-
-    .ok-btn {
-        background: #1EBEBE;
-        padding: 10px 45px;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-    }
-
-    .ok-btn input {
-        color: #fff !important;
-    }
-
-    .ok-btn:hover {
-        background: #18A1A1;
-        color: #fff !important;
-    }
-
-    .ok-btn input:hover {
-        color: #fff !important;
-    }
-</style>
+<script src="{base_url}plugins/jquery.form.validation.min.js"></script>
+<script src="{base_url}js/jquery.validate.min.js"></script>
+<script src="{base_url}js/form_validation_messages_ru.js"></script>
 <script>
     var timer;
 
@@ -1652,43 +1236,43 @@
         $(".efr5").css("display", "block")
 
     })
-    $("#form5").on("submit", (e) => {
-        e.preventDefault();
-        $.ajax({
-            type: "GET",
-            url: "{base_url}users",
-            headers: {
-                "Accept": "application/json",
-            },
-            success: function(result) {
-                if (result.filter(elem => elem.login === String(errorPhone.value)).length > 0) {
-                    userTimer();
-                    $(".efr5").css("display", "none");
-                    $(".efr6").css("display", "block");
-                    $(".validate-text5").text("");
-                    localStorage.setItem("restore-phone", errorPhone.value);
+    // $("#form5").on("submit", (e) => {
+    //     e.preventDefault();
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "{base_url}users",
+    //         headers: {
+    //             "Accept": "application/json",
+    //         },
+    //         success: function(result) {
+    //             if (result.filter(elem => elem.login === String(errorPhone.value)).length > 0) {
+    //                 userTimer();
+    //                 $(".efr5").css("display", "none");
+    //                 $(".efr6").css("display", "block");
+    //                 $(".validate-text5").text("");
+    //                 localStorage.setItem("restore-phone", errorPhone.value);
 
-                } else {
-                    $(".validate-text5").text("Нет такого пользователья");
-                }
-            },
-        })
+    //             } else {
+    //                 $(".validate-text5").text("Нет такого пользователья");
+    //             }
+    //         },
+    //     })
 
-        $.ajax({
-            type: "POST",
-            url: "{base_url}/users/resend_sms",
-            headers: {
-                "Accept": "application/json",
-            },
-            data: {
-                phone: localStorage.getItem("restore-phone")
-            },
-            success(result) {
-                localStorage.setItem("res-sms", result);
-            }
-        })
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{base_url}/users/resend_sms",
+    //         headers: {
+    //             "Accept": "application/json",
+    //         },
+    //         data: {
+    //             phone: localStorage.getItem("restore-phone")
+    //         },
+    //         success(result) {
+    //             localStorage.setItem("res-sms", result);
+    //         }
+    //     })
 
-    })
+    // })
     $(".cancel-btn").click((e) => {
         e.preventDefault();
         $(".efr6").hide();
@@ -1758,10 +1342,10 @@
         })
     }
 
-    $("#form1").submit((e) => {
-        e.preventDefault();
-        onPost();
-    })
+    // $("#form1").submit((e) => {
+    //     e.preventDefault();
+    //     onPost();
+    // })
 
     $(".hideTimer_a").click(() => {
         sendSms();
@@ -1780,10 +1364,10 @@
         verSms();
         userTimer();
     })
-    $("#form4").submit((e) => {
-        e.preventDefault();
-        onRegister();
-    })
+    // $("#form4").submit((e) => {
+    //     e.preventDefault();
+    //     onRegister();
+    // })
     $(".rf2").click((e) => {
         e.preventDefault();
         $(".efr2").hide();
@@ -1813,29 +1397,29 @@
 
     })
 
-    $("#form2").on("submit", (e) => {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "{base_url}users/login",
-            headers: {
-                "Accept": "application/json",
-            },
-            data: {
-                phone: Number(localStorage.getItem("ver-number")),
-                password: $("#enter-password").val()
-            },
-            success: function(result) {
-                $(".validate-text2").text("");
-                userInfo();
-            },
-            error: function(error) {
-                $(".validate-text2").text("Неправильный логин или пароль")
-            }
-        })
+    // $("#form2").on("submit", (e) => {
+    //     e.preventDefault();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{base_url}users/login",
+    //         headers: {
+    //             "Accept": "application/json",
+    //         },
+    //         data: {
+    //             phone: Number(localStorage.getItem("ver-number")),
+    //             password: $("#enter-password").val()
+    //         },
+    //         success: function(result) {
+    //             $(".validate-text2").text("");
+    //             userInfo();
+    //         },
+    //         error: function(error) {
+    //             $(".validate-text2").text("Неправильный логин или пароль")
+    //         }
+    //     })
 
 
-    })
+    // })
 
     $("#form2").on('keyup', (e) => {
         if (e.keyCode === 13) {
@@ -2047,46 +1631,46 @@
         }
     })
 
-    $("#form7").on('submit', (e) => {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "{base_url}users/forgot_password",
-            headers: {
-                "Accept": "application/json",
-            },
-            data: {
-                phone: Number(localStorage.getItem("restore-phone")),
-                password: $("#first-password2").val()
-            },
-            success: function(result) {
+    // $("#form7").on('submit', (e) => {
+    //     e.preventDefault();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{base_url}users/forgot_password",
+    //         headers: {
+    //             "Accept": "application/json",
+    //         },
+    //         data: {
+    //             phone: Number(localStorage.getItem("restore-phone")),
+    //             password: $("#first-password2").val()
+    //         },
+    //         success: function(result) {
 
-                $.ajax({
-                    type: "POST",
-                    url: "{base_url}users/login",
-                    headers: {
-                        "Accept": "application/json",
-                    },
-                    data: {
-                        phone: Number(localStorage.getItem("restore-phone")),
-                        password: $("#first-password2").val()
-                    },
-                    success: function(result) {
-                        $(".validate-text2").text("");
-                        userInfo();
-                    },
-                    error: function(error) {
-                        $(".validate-text2").text("Неправильный логин или пароль");
-                    }
-                })
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: "{base_url}users/login",
+    //                 headers: {
+    //                     "Accept": "application/json",
+    //                 },
+    //                 data: {
+    //                     phone: Number(localStorage.getItem("restore-phone")),
+    //                     password: $("#first-password2").val()
+    //                 },
+    //                 success: function(result) {
+    //                     $(".validate-text2").text("");
+    //                     userInfo();
+    //                 },
+    //                 error: function(error) {
+    //                     $(".validate-text2").text("Неправильный логин или пароль");
+    //                 }
+    //             })
 
-                $(".enter-btn-bg").css("display", "none");
-                $(".account-btn").css("display", "none");
-                document.getElementById("account-wrap").style.display = "block";
-                document.getElementById("account-wrap2").style.display = "block";
-            },
-        })
-    })
+    //             $(".enter-btn-bg").css("display", "none");
+    //             $(".account-btn").css("display", "none");
+    //             document.getElementById("account-wrap").style.display = "block";
+    //             document.getElementById("account-wrap2").style.display = "block";
+    //         },
+    //     })
+    // })
     const __navItems = Array.from(document.querySelectorAll(" .navigation__content .navigation__item"));
     __navItems.forEach((link, ind) => {
         const elem = link.childNodes[1].src;
@@ -2108,4 +1692,595 @@
             window.location.reload();
         }
     }
+    // $('.form-detail_validate').val('');
+        // removeAll();
+        function validate_chekout() {
+        $('#form1').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+                onPost();
+            }
+
+        });
+        $('#form2').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+                $.ajax({
+                    type: "POST",
+                    url: "{base_url}users/login",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    data: {
+                        phone: Number(localStorage.getItem("ver-number")),
+                        password: $("#enter-password").val()
+                    },
+                    success: function(result) {
+                        $(".validate-text2").text("");
+                        userInfo();
+                    },
+                    error: function(error) {
+                        $(".validate-text2").text("Неправильный логин или пароль");
+                    }
+                });
+            return false;
+            }
+
+        });
+
+        $('#form4').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+                onRegister();
+            }
+
+        });
+
+        $('#form5').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+                $.ajax({
+                    type: "GET",
+                    url: "{base_url}users",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    success: function(result) {
+                        if (result.filter(elem => elem.login === String(errorPhone.value)).length > 0) {
+                            userTimer();
+                            $(".efr5").css("display", "none");
+                            $(".efr6").css("display", "block");
+                            $(".validate-text5").text("");
+                            localStorage.setItem("restore-phone", errorPhone.value);
+
+                        } else {
+                            $(".validate-text5").text("Нет такого пользователья");
+                        }
+                    },
+                })
+
+                $.ajax({
+                    type: "POST",
+                    url: "{base_url}/users/resend_sms",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    data: {
+                        phone: localStorage.getItem("restore-phone")
+                    },
+                    success(result) {
+                        localStorage.setItem("res-sms", result);
+                    }
+                })
+            return false;
+            }
+
+        });
+
+        $('#form7').validate({
+            lang: 'ru',
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 64,
+                    minlength: 3
+                }
+            },
+            submitHandler:function(form){
+                $.ajax({
+                    type: "POST",
+                    url: "{base_url}users/forgot_password",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    data: {
+                        phone: Number(localStorage.getItem("restore-phone")),
+                        password: $("#first-password2").val()
+                    },
+                    success: function(result) {
+
+                        $.ajax({
+                            type: "POST",
+                            url: "{base_url}users/login",
+                            headers: {
+                                "Accept": "application/json",
+                            },
+                            data: {
+                                phone: Number(localStorage.getItem("restore-phone")),
+                                password: $("#first-password2").val()
+                            },
+                            success: function(result) {
+                                $(".validate-text2").text("");
+                                userInfo();
+                            },
+                            error: function(error) {
+                                $(".validate-text2").text("Неправильный логин или пароль");
+                            }
+                        })
+
+                        $(".enter-btn-bg").css("display", "none");
+                        $(".account-btn").css("display", "none");
+                        document.getElementById("account-wrap").style.display = "block";
+                        document.getElementById("account-wrap2").style.display = "block";
+                    },
+                })
+            return false;
+            }
+
+        });
+        
+    }
+    validate_chekout();
+
+    
 </script>
+
+<style>
+    .enter-btn-bg {
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+        background: red;
+        width: 100vw;
+        height: 100vh;
+        background: #a8a8a8a8;
+        transition: 1000ms;
+        display: none;
+    }
+
+    .ver-form {
+        display: none;
+    }
+
+    .pass-form {
+        display: none;
+    }
+
+    .user-phone {}
+
+    .verification-form {
+        position: absolute;
+    }
+
+    .active-animation {
+        animation: showOpacity 0.3s forwards alternate linear;
+    }
+
+    .disactive-animation {
+        animation: hideOpacity 0.3s forwards alternate linear;
+    }
+
+    @keyframes showOpacity {
+        from {
+            opacity: 0.3;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes hideOpacity {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    body {
+        margin: 0;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    .page-content {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        -o-justify-content: center;
+        -ms-justify-content: center;
+        -moz-justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -o-align-items: center;
+        -ms-align-items: center;
+        -moz-align-items: center;
+        -webkit-align-items: center;
+    }
+
+    .form-v8-content {
+        background: #fff;
+        border-radius: 8px;
+        -o-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        margin: 177px 0;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: #444444;
+        position: relative;
+        display: flex;
+        display: -webkit-flex;
+    }
+
+    .form-v8-content .form-left {
+        margin-bottom: -4px;
+    }
+
+    .form-v8-content .form-left img {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .form-v8-content .enter-form {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    .form-v8-content .tab {
+        margin: 5px 0 26px;
+        width: 100%;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -o-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -webkit-justify-content: space-between;
+    }
+
+    .form-check {
+        padding: 10px 0 20px 0;
+    }
+
+    .form-v8-content .tab .tab-inner {
+        width: 100%;
+    }
+
+    .form-v8-content .tab .tablinks {
+        background: transparent;
+        border: none;
+        outline: none;
+        -o-outline: none;
+        -ms-outline: none;
+        -moz-outline: none;
+        -webkit-outline: none;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #444;
+        border-bottom: 3px solid;
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+        width: 100%;
+    }
+
+    .form-v8-content .tab .tablinks.active {
+        font-weight: 500;
+        color: #444444;
+        border-bottom-color: #4a4ac3;
+    }
+
+    .form-v8-content .form-row {
+        width: 100%;
+        position: relative;
+        display: block;
+    }
+
+    .form-v8-content .form-row .form-row-inner {
+        position: relative;
+        /* display: flex; */
+        justify-content: center;
+    }
+
+    .form-v8-content .form-row .form-row-inner .label {
+        position: absolute;
+        top: -2px;
+        left: 10px;
+        font-size: 18px;
+        color: #a8a8a8;
+        padding: 10px;
+        font-weight: 400;
+        transform-origin: 0 0;
+        transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -webkit-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+    }
+
+    .forgot-pass_a a {
+        color: #1EBEBE;
+    }
+
+    .text-label {
+        padding: 10px 0;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #A8A8A8;
+    }
+
+    .form-check {
+        display: inline-block;
+    }
+
+    .form-check-input {
+        display: flex;
+        width: 20px !important;
+        margin: 0 5px 5px 0;
+    }
+
+    .form-check-input:focus {
+        box-shadow: none;
+    }
+
+    .form-check-label {
+        padding: 0 30px;
+        color: #A8A8A8;
+    }
+
+    .form-v8-content .form-row .form-row-inner .border {
+        position: absolute;
+        bottom: 31px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: #53c83c;
+        transform: scaleX(0);
+        -moz-transform: scaleX(0);
+        -webkit-transform: scaleX(0);
+        -o-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all .15s ease;
+        -moz-transition: all .15s ease;
+        -webkit-transition: all .15s ease;
+        -o-transition: all .15s ease;
+        -ms-transition: all .15s ease;
+    }
+
+    .form-v8-content .form-detail .input-text {
+        border: 1px solid #E0E0E0;
+        border-radius: 3px;
+        height: 45px;
+        width: 350px;
+        padding: 5px 0 0 20px;
+    }
+    .form-v8-content .form-detail .input-text {
+        border: 1px solid #E0E0E0;
+        border-radius: 3px;
+        height: 45px;
+        width: 350px;
+        padding: 5px 0 0 20px;
+    }
+
+    .form-v8-content .form-detail input {
+        width: 100%;
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+        background: transparent;
+        color: #333;
+    }
+
+    .enter-reg_btn {
+        margin-right: 0 !important;
+        width: 350px !important;
+    }
+
+    .form-v8-content .form-detail .enter {
+        background: #1EBEBE;
+        border-radius: 5px;
+        color: #fff;
+        width: 160px;
+        height: 44px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .form-v8-content .form-detail .register {
+        border-radius: 5px;
+        border: 1px solid #1EBEBE !important;
+        color: #1EBEBE;
+        width: 160px;
+        height: 44px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .form-v8-content .form-detail .enter-main {
+        width: 100% !important;
+        background: #1EBEBE;
+        border-radius: 5px;
+        color: #fff;
+        height: 44px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .form-v8-content .form-detail .enter:hover {
+        background: #18A1A1;
+        border-radius: 5px;
+        color: #fff;
+    }
+
+    .form-v8-content .form-detail .register:hover {
+        background: #1EBEBE;
+        color: #fff;
+    }
+
+    .main-enter_btn {
+        width: 100% !important;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 991px) {
+        .form-v8-content {
+            margin: 180px 20px;
+            flex-direction: column;
+            -o-flex-direction: column;
+            -ms-flex-direction: column;
+            -moz-flex-direction: column;
+            -webkit-flex-direction: column;
+        }
+
+        .form-v8-content .form-left {
+            width: 100%;
+        }
+
+        .form-v8-content .form-left img {
+            width: 100%;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .form-v8-content .enter-form {
+            width: auto;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .form-v8-content .tab {
+            margin-top: 45px;
+        }
+
+        .form-v8-content .form-detail .register {
+            margin-bottom: 0px;
+        }
+    }
+
+    @media screen and (max-width: 325px) {
+        .form-v8-content .tab {
+            flex-direction: column;
+            -o-flex-direction: column;
+            -ms-flex-direction: column;
+            -moz-flex-direction: column;
+            -webkit-flex-direction: column;
+        }
+    }
+
+    .enter-btn-phone {
+        padding: 45px;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+        width: 100vw;
+        height: 100vh;
+        transition: 1000ms;
+        display: none;
+
+    }
+
+    .enter-btn-password {
+        padding: 45px;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+        width: 100vw;
+        height: 100vh;
+        transition: 1000ms;
+        display: none;
+
+    }
+
+    .enter-form_pass {
+        box-shadow: 5px 5px 5px 5px #e5e5e5;
+        padding: 20px 40px;
+        border-radius: 5px;
+    }
+
+    .ok-btn {
+        background: #1EBEBE;
+        padding: 10px 45px;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .ok-btn input {
+        color: #fff !important;
+    }
+
+    .ok-btn:hover {
+        background: #18A1A1;
+        color: #fff !important;
+    }
+
+    .ok-btn input:hover {
+        color: #fff !important;
+    }
+</style>
