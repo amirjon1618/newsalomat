@@ -67,7 +67,7 @@ class PushNotification extends REST_Controller
                 $status = 'Доставлен';
             }
 
-            $title = 'Здавствуйте, ваш заказ сменил статус';
+            $title = "Здавствуйте, ваш заказ под № $id сменил статус";
             $description = "Теперь он находится в статусе << $status >>";
 
         $token[] =$order_user[0]['onesignal_id'];
