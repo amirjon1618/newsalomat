@@ -119,8 +119,10 @@
 
 
   function sendNotification(id) {
-      $.post('<?= $base_url ?>index.php/PushNotification/orderPushNotification/' + id , res => {
-          console.log(res)
+      let status = $('#status_select').val();
+
+      $.post('<?= $base_url ?>index.php/PushNotification/orderPushNotification/' + id , {
+          'status_id': status
       })
   }
 </script>

@@ -53,17 +53,17 @@ class PushNotification extends REST_Controller
         $order_user = $this->order->get_user($id);
 
             $status = '';
-            if ($order['status_id'] == -1){
+            if ($this->input->post('status_id') == -1){
                 $status = 'Отменен';
-            }if ($order['status_id'] == 0){
+            }if ($this->input->post('status_id') == 0){
                 $status = 'Не подтвержён';
-            }if ($order['status_id'] == 1){
+            }if ($this->input->post('status_id') == 1){
                 $status = 'В ожидании';
-            }if ($order['status_id'] == 2){
+            }if ($this->input->post('status_id') == 2){
                 $status = 'На обработку';
-            }if ($order['status_id'] == 3){
+            }if ($this->input->post('status_id') == 3){
                 $status = 'Отправлен на сборку';
-            }if ($order['status_id'] == 4){
+            }if ($this->input->post('status_id') == 4){
                 $status = 'Доставлен';
             }
 

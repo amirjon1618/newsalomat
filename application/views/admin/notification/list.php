@@ -71,7 +71,6 @@
 <script>
     function sendNotification(id) {
         $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
-            console.log(res)
         })
     }
 </script>
