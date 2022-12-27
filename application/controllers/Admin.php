@@ -1788,24 +1788,9 @@ class Admin extends CI_Controller
             $user = $this->user->GetUserData($auth_id);
             $order = $this->order->get($id);
             $order_user = $this->order->get_user($id);
-            $status = '';
-            if ($this->input->post('status') == -1){
-                $status = 'Отменен';
-            }if ($this->input->post('status') == 0){
-                $status = 'Не подтвержён';
-            }if ($this->input->post('status') == 1){
-                $status = 'В ожидании';
-            }if ($this->input->post('status') == 2){
-                $status = 'На обработку';
-            }if ($this->input->post('status') == 3){
-                $status = 'Отправлен на сборку';
-            }if ($this->input->post('status') == 4){
-                $status = 'Доставлен';
-            }
 
-            $title = 'Здавствуйте, ваш заказ сменил статус';
-            $description = "Теперь он находится в статусе << >>";
-            PushNotifications::send($order_user[0]['onesignal_id'], $title, $description,'',$id);
+
+//            PushNotifications::send($order_user[0]['onesignal_id'], $title, $description,'',$id);
 
             $prev_status_id = ($this->order->get($id))['status_id'];
 

@@ -79,7 +79,7 @@
                   <textarea class="form-control" required maxlength="500" name="user_order_comment" id="user_order_comment" rows="3" cols="25">
 
               </textarea>
-                  <button name="saveBtn" value="Сохранить" type="submit" class="btn btn-info save_user_order_changes">Сохранить</button>
+                  <button name="saveBtn" value="Сохранить" onclick="sendNotification(<?php echo $list[0]['order_id']?>)" type="submit" class="btn btn-info save_user_order_changes">Сохранить</button>
                 </form>
               </div>
             <?php endif; ?>
@@ -116,4 +116,11 @@
     });
   });
   $(document).ready(function() {});
+
+
+  function sendNotification(id) {
+      $.post('<?= $base_url ?>index.php/PushNotification/orderPushNotification/' + id , res => {
+          console.log(res)
+      })
+  }
 </script>
