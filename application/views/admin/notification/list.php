@@ -45,7 +45,7 @@
                                 <td style="text-align: center;width: 400px;"><a target="_blank" href="{base_url}img/icons/{img}"><img src="{base_url}img/icons/{img}" style="width: 400px;" /></a></td>
 
                                 <td style="text-align: center;width: 100px;">
-                                    <a  href="{base_url}index.php/admin/sendNotification/{id}">
+                                    <a  onclick="sendNotification({id})">
                                         <i style="font-size: 24px;" class="fa fa-paper-plane"> </i>
                                     </a>
                                 </td>
@@ -69,4 +69,9 @@
 
 </section><!-- /.content -->
 <script>
+    function sendNotification(id) {
+        $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
+            console.log(res)
+        })
+    }
 </script>

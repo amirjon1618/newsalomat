@@ -1778,17 +1778,34 @@ class Admin extends CI_Controller
         $data = array("base_url" => base_url(), "alert" => "");
 
         if ($this->input->get("do") == "updateok") {
-            $data['alert'] = $this->createAlertInfo('Статус успешно обнoвлён');
+            $data['alert'] = $this->createAlertInfo('Статус заказа обнoвлён');
         }
         if ($this->input->get("do") == "updateNotOk") {
-            $data['alert'] = $this->createAlertInfo($this->input->get("comment"));
+            $data['alert'] = $this->createAlertInfo($this->input->post('status'));
         }
         if ($this->input->post('saveBtn')) {
             $auth_id = $this->input->cookie('auth_id', TRUE);
             $user = $this->user->GetUserData($auth_id);
             $order = $this->order->get($id);
             $order_user = $this->order->get_user($id);
-            PushNotifications::send($order_user[0]['onesignal_id'], 'TEST');
+            $status = '';
+            if ($this->input->post('status') == -1){
+                $status = 'Отменен';
+            }if ($this->input->post('status') == 0){
+                $status = 'Не подтвержён';
+            }if ($this->input->post('status') == 1){
+                $status = 'В ожидании';
+            }if ($this->input->post('status') == 2){
+                $status = 'На обработку';
+            }if ($this->input->post('status') == 3){
+                $status = 'Отправлен на сборку';
+            }if ($this->input->post('status') == 4){
+                $status = 'Доставлен';
+            }
+
+            $title = 'Здавствуйте, ваш заказ сменил статус';
+            $description = "Теперь он находится в статусе << >>";
+            PushNotifications::send($order_user[0]['onesignal_id'], $title, $description,'',$id);
 
             $prev_status_id = ($this->order->get($id))['status_id'];
 

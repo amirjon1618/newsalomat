@@ -15,6 +15,7 @@ class Promos extends REST_Controller
 
         $this->load->database();
         $this->load->model('PromoCode');
+        $this->load->model('notification');
     }
 
     /**

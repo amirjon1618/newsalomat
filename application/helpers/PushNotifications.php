@@ -2,35 +2,42 @@
 
 class PushNotifications
 {
-    public static function send($oneSignalId, $message)
+    public static function send($registration_ids, $title ='',$description='', $image='',$id = '')
     {
-        $content = array(
-            "en" => $message
-        );
 
-        $fields = array(
-            'app_id' => "a899a164-c198-4e81-9c93-076a69e81476",
-            'include_player_ids' => array($oneSignalId),
-            'data' => array("foo" => "bar"),
-            'contents' => $content
-        );
+        $data = [
+            "notification" => [
+                "title"     => $title,
+                'body'      => $description,
+                "image"     => $image,
+            ],
+            "data" => [
+                "info"          =>  [
+                    "id"        => $id,
+                    "title"     => $title,
+                    "body"      => $description,
+                    "image"     => $image,
+                ]
+            ],
 
-        $fields = json_encode($fields);
-        print("\nJSON sent:\n");
-        print($fields);
+            "registration_ids" => $registration_ids
+        ];
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8', 'Authorization: Basic ZjNlYjFkMTktMDQyNi00NGU0LThiYWMtMWIwODcxM2ViZTg2'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_POST, 1);
 
-        return $response;
+        $headers = array();
+        $headers[] = 'Content-Type: application/json';
+        $headers[] = 'Authorization: key = AAAAJ2j5L-8:APA91bHiRcnaNMO2M7CpcMIQQkNaIygz40MV53WrKzc5VAm7IKjYZ9MduirUpdheN-imptK5gep6RFTiOc3djaH_KJOGjepYRXTB9Gluo-WkDfp6V-NgWea1MT5-7jiPcxPTkF4n-0HM';
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $result = curl_exec($ch);
+        curl_close ($ch);
+
+        return $result;
     }
 }
