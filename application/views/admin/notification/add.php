@@ -29,6 +29,15 @@
                             <label>Текст сообщения</label>
                             <input type="text" id="description" name="description" class="form-control" placeholder="Вводите ...">
                         </div>
+                        <div class="form-group">
+                            <label>Тип рассылки</label>
+                            <select id="type" name="type" class="form-control">
+                                <option value="0">Выберите</option>
+                                <option value="holidays">Праздники</option>
+                                <option value="promotions">Акции</option>
+                                <option value="events">События</option>
+                            </select>
+                        </div>
                         <div class="form-group" id="file_div">
                             <label class="userfile_label">Изображение рассылки</label>
                             <input type="file" name="userfile" class="file_inp" size="50" />
