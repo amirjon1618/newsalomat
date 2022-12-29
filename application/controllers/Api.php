@@ -194,7 +194,6 @@ class Api extends CI_Controller
         }
     }
 
-
     public function update_sms($sms_id, $array, $source_id, $source_name)
     {
         $this->load->model('sms');

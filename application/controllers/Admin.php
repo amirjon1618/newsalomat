@@ -238,7 +238,6 @@ class Admin extends CI_Controller
 
         $code = $this->notification->get_all();
         $data['list'] = $code;
-
         $data['content'] = $this->parser->parse('admin/notification/list', $data, true);
         $this->template($data);
     }
@@ -272,7 +271,7 @@ class Admin extends CI_Controller
             }
 
             $img = $this->upload->data();
-            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "type" => $this->input->post("type"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
             $this->notification->add($dd);
             redirect(base_url("index.php/admin/notification?do=addok"));
 
@@ -310,7 +309,7 @@ class Admin extends CI_Controller
             }
 
             $img = $this->upload->data();
-            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"),"type" => $this->input->post("type"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
             $this->notification->update($id, $dd);
             redirect(base_url("index.php/admin/notification?do=addok"));
         }
