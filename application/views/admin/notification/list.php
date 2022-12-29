@@ -90,20 +90,20 @@
                                         if ($item['type']=='events'){
                                             echo 'События';
                                         }?></span></td>
-                                <td style="text-align: center;width: 400px;"><a target="_blank" href="{base_url}img/icons/{img}"><img src="{base_url}img/icons/{img}" style="width: 400px;" /></a></td>
+                                <td style="text-align: center;width: 400px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 400px;" /></a></td>
 
                                 <td  style="text-align: center;width: 100px;">
-                                    <a class="btn" onclick="sendNotification({id})">
+                                    <a class="btn" onclick="sendNotification(<?= $item['id']?>)">
                                         <i style="font-size: 24px;" class="fa fa-paper-plane"> </i>
                                     </a>
                                 </td>
                                 <td  style="text-align: center;width: 100px;">
-                                    <a  href="{base_url}index.php/admin/editNotification/{id}">
+                                    <a  href="<?= $base_url ?>index.php/admin/editNotification/<?= $item['id']?>">
                                         <i style="font-size: 24px;" class="fa fa-edit"> </i>
                                     </a>
                                 </td>
                                 <td style="text-align: center;width: 96px;">
-                                 <a class="confirmation" href="{base_url}index.php/admin/notification?do=remove&id={id}"><i style="font-size: 24px;color:red;" class="fa fa-remove"> </i>
+                                 <a class="confirmation" href="<?= $base_url ?>index.php/admin/notification?do=remove&id=<?= $item['id']?>"><i style="font-size: 24px;color:red;" class="fa fa-remove"> </i>
                                 </a></td>
 
                             </tr>

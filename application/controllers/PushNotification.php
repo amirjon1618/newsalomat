@@ -38,7 +38,7 @@ class PushNotification extends REST_Controller
         foreach ($users as $user){
             $tokens[] = $user['onesignal_id'];
         }
-        $result = PushNotifications::send($tokens,$data['name'],$data['description'],$image,$id,$data['name']);
+        $result = PushNotifications::send($tokens,$data['name'],$data['description'],$image,$id,$data['type']);
 
         $this->response($result, REST_Controller::HTTP_OK);
     }
