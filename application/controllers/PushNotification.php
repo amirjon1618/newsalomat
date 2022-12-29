@@ -38,7 +38,7 @@ class PushNotification extends REST_Controller
         foreach ($users as $user){
             $tokens[] = $user['onesignal_id'];
         }
-        $result = PushNotifications::send($tokens,$data['name'],$data['description'],$image,$id);
+        $result = PushNotifications::send($tokens,$data['name'],$data['description'],$image,$id,$data['type']);
 
         $this->response($result, REST_Controller::HTTP_OK);
     }
@@ -72,7 +72,7 @@ class PushNotification extends REST_Controller
 
         $token[] =$order_user[0]['onesignal_id'];
 
-        $result = PushNotifications::send($token, $title, $description,'',$id);
+        $result = PushNotifications::send($token, $title, $description,'',$id,'orders');
 
         $this->response($result, REST_Controller::HTTP_OK);
     }
@@ -91,6 +91,7 @@ class PushNotification extends REST_Controller
             "title" => $data['name'],
             'body'  => $data['description'],
             "image" => $image,
+            "type"  => $data['type'],
         ];
 
         $this->response($result, REST_Controller::HTTP_OK);
@@ -110,6 +111,7 @@ class PushNotification extends REST_Controller
                 "title" => $item['name'],
                 'body'  => $item['description'],
                 "image" => base_url()."img/icons/".$item['img'],
+                "type"  => $item['type'],
             ];
         }
 

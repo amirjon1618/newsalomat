@@ -10,6 +10,32 @@
     </ol>
 </section>
 {alert}
+
+<!-- Button HTML (to Trigger Modal) -->
+<div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Success!</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Рассылка отправлено успешно.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button HTML (to Trigger Modal) -->
+
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -30,6 +56,7 @@
                                 <th>ID</th>
                                 <th>Название рассылки</th>
                                 <th>Текст сообщения</th>
+                                <th>Тип рассылки</th>
                                 <th>Фото для рассылки</th>
                                 <th style="text-align: center;">Отправить</th>
                                 <th style="text-align: center;">Изменить</th>
@@ -37,29 +64,50 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {list}
+                            <?php foreach($list as $item): ?>
                             <tr>
-                                <td>{id}</td>
-                                <td>{name}</td>
-                                <td>{description}</td>
-                                <td style="text-align: center;width: 400px;"><a target="_blank" href="{base_url}img/icons/{img}"><img src="{base_url}img/icons/{img}" style="width: 400px;" /></a></td>
+                                <td style="text-align: center"><?= $item['id']?></td>
+                                <td style="text-align: center"><?= $item['name']?></td>
+                                <td style="text-align: center"><?= $item['description']?></td>
+                                <td style="width: 200px; text-align: center;"><span class="label" style="background:
+                                    <?php
+                                    if ($item['type']=='holidays'){
+                                        echo '#ffff00';
+                                    }
+                                    if ($item['type']=='promotions'){
+                                        echo '#ff0000';
+                                    }
+                                    if ($item['type']=='events'){
+                                        echo '#00bfff';
+                                    }?>
+                                ; border-radius:.5em"><?php
+                                        if ($item['type']=='holidays'){
+                                            echo 'Праздники';
+                                        }
+                                        if ($item['type']=='promotions'){
+                                            echo 'Акции';
+                                        }
+                                        if ($item['type']=='events'){
+                                            echo 'События';
+                                        }?></span></td>
+                                <td style="text-align: center;width: 400px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 400px;" /></a></td>
 
-                                <td style="text-align: center;width: 100px;">
-                                    <a  onclick="sendNotification({id})">
+                                <td  style="text-align: center;width: 100px;">
+                                    <a class="btn" onclick="sendNotification(<?= $item['id']?>)">
                                         <i style="font-size: 24px;" class="fa fa-paper-plane"> </i>
                                     </a>
                                 </td>
-                                <td style="text-align: center;width: 100px;">
-                                    <a  href="{base_url}index.php/admin/editNotification/{id}">
+                                <td  style="text-align: center;width: 100px;">
+                                    <a  href="<?= $base_url ?>index.php/admin/editNotification/<?= $item['id']?>">
                                         <i style="font-size: 24px;" class="fa fa-edit"> </i>
                                     </a>
                                 </td>
                                 <td style="text-align: center;width: 96px;">
-                                 <a class="confirmation" href="{base_url}index.php/admin/notification?do=remove&id={id}"><i style="font-size: 24px;color:red;" class="fa fa-remove"> </i>
+                                 <a class="confirmation" href="<?= $base_url ?>index.php/admin/notification?do=remove&id=<?= $item['id']?>"><i style="font-size: 24px;color:red;" class="fa fa-remove"> </i>
                                 </a></td>
 
                             </tr>
-                            {/list}
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div><!-- /.box-body -->
@@ -68,9 +116,25 @@
     </div><!-- /.row -->
 
 </section><!-- /.content -->
+
+<style>
+    .bs-example{
+        margin: 20px;
+    }
+</style>
+
+<script>
+    $(document).ready(function(){
+        $(".btn").click(function(){
+            $("#myModal").modal('show');
+        });
+    });
+</script>
+
 <script>
     function sendNotification(id) {
         $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
         })
     }
+
 </script>

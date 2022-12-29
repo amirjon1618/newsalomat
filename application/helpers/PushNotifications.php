@@ -2,7 +2,7 @@
 
 class PushNotifications
 {
-    public static function send($registration_ids, $title ='',$description='', $image='',$id = '')
+    public static function send($registration_ids, $title ='',$description='', $image='',$id = '',$type = '')
     {
 
         $data = [
@@ -17,7 +17,8 @@ class PushNotifications
                     "title"     => $title,
                     "body"      => $description,
                     "image"     => $image,
-                ]
+                    "type"      => $type
+                    ]
             ],
 
             "registration_ids" => $registration_ids
