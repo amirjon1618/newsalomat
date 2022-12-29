@@ -198,7 +198,7 @@
                                             </label>
                                             <p class="validate-text validate-text2"></p>
                                         </div>
-                                        <div class="forgot-pass d-flex justify-content-between align-items-center pt-2">
+                                        <div class="forgot-pass d-flex justify-content-between align-items-center pt-4">
                                             <div class="form-check p-0">
                                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
@@ -1709,6 +1709,11 @@
             }
 
         });
+        $("#enter-password").on("input",function(){
+            if($(this).val() !== ""){
+                $(".validate-text2").text("");
+            }
+        })
         $('#form2').validate({
             lang: 'ru',
             rules: {
@@ -1842,7 +1847,8 @@
                                 userInfo();
                             },
                             error: function(error) {
-                                $(".validate-text2").text("Неправильный логин или пароль");
+                                 $(".validate-text2").text("Неправильный логин или пароль");
+                                
                             }
                         })
 
@@ -2030,6 +2036,7 @@
         position: relative;
         /* display: flex; */
         justify-content: center;
+        padding-bottom: 10px;
     }
 
     .form-v8-content .form-row .form-row-inner .label {

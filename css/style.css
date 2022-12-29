@@ -11047,6 +11047,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .validate-text {
     text-align: center !important;
     color: red !important;
+    position: absolute;
+    font-size: 14px;
+    margin-top: -15px;
 }
 .ps-product--wide .ps-product__shopping .ps-btn {
     width: 186px;
@@ -15329,7 +15332,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     border: none;
 }
 .form-row-last {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 .hide-btn-pass {
     position: absolute;

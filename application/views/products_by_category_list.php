@@ -436,9 +436,10 @@
     document.getElementsByClassName('blog_about').offsetWidth / 100;
     if (document.querySelector(".ps-product__content i")) document.querySelector(".ps-product__content i").addEventListener("click", onAddBorder())
 
-
     onAddBorder();
+
 </script>
+
 <style>
     .like-button {
         border: 2px solid #A8A8A8;

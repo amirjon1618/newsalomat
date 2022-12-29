@@ -27,7 +27,6 @@
                                 </thead>
                                 <tbody class="pr-list">
                                     <!--PRODUCT LIST-->
-
                                 </tbody>
                             </table>
                         </div>
@@ -50,7 +49,6 @@
                                             <td class="border-0 fw-bolder table-text-bold" style="font-weight: 500;">Стоимост товаров: </td>
                                             <td class="border-0 table-text-end table-text-bold"><span class="number-currency"> </span><span class="text-currency"> смн.</span></td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -61,7 +59,6 @@
                                             <td class="border-0 table-text-bold" style="font-weight: 500;">Итого: </td>
                                             <td class="border-0 table-text-end table-text-bold"><span class="number-currency_total"> </span><span class="text-currency"> смн.</span></td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -69,7 +66,6 @@
                                 <input type="text" name="promo_code" id="promo_code" class="border price-text__input" placeholder="Активировать промо код">
                                 <button class="price-text__btn" onclick="onPromoCode()"><img src="{base_url}img/right-arrow.svg" alt=""></button>
                             </div>
-
                         </div>
                         <div class="ps-section__cart-actions">
                             <a class="ps-btn ps-btn--outline checkout" onclick="orderCheckout()" href="{base_url}index.php/main/checkout">
@@ -92,7 +88,6 @@
     }
 
     function decrease_count_cart(id) {
-
         var mydata = $.parseJSON(localStorage.getItem("product_list"));
         mydata.forEach(function(item, index) {
             if (item.product_id == id) {
@@ -110,7 +105,6 @@
         });
         product_list();
         set_prods_header();
-
     }
 
     function increase_count_cart(id) {
@@ -123,8 +117,9 @@
                 // }
                 mydata[index] = item;
 
-                localStorage.setItem("product_list", JSON.stringify(mydata))
-                $('#count_input_ps' + id).val(item.product_count);
+                localStorage.setItem("product_list", JSON.stringify(mydata));
+                document.getElementById('count_input_ps' + id).value = "dsaasdads"
+                // $('#count_input_ps' + id).val(item.product_count);
             }
         });
         product_list();
@@ -234,7 +229,7 @@
                 var dv3 = " <div class=\"form-group--number\">" +
                     "<button class=\"up_count\" onclick=\"increase_count_cart(" + item.product_id + ")\">+</button>" +
                     "<button class=\"down_count\" onclick=\"decrease_count_cart(" + item.product_id + ")\">-</button>" +
-                    "<input class=\"form-control\" id=\"count_input_ps" + item.product_id + "\" onchange=\"change_count_cart(" + item.product_id + ")\" type=\"text\" placeholder=\"1\" value=\" " + item.product_count + "\">" +
+                    "<input oninput=\"this.value = Math.round(this.value)\" class=\"form-control\" id=\"count_input_ps" + item.product_id + "\" onchange=\"change_count_cart(" + item.product_id + ")\" type=\"number\" placeholder=\"1\" value=\"" + item.product_count + "\">" +
                     "</div>";
                 td3.innerHTML += dv3;
                 var td4 = document.createElement('td');
@@ -283,8 +278,7 @@
             }
         });
     })
-
-
+    
     // get PromoCode
     let result = null;
 

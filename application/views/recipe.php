@@ -11,7 +11,7 @@
                 </div>
                 <p class="validate-text validate-text4"></p>
                 <h5 class="recipe_error_msg_code">Введите минимум 9 цифр</h5>
-                <div class="recipe_name_div_inp py-3">
+                <div class="recipe_name_div_inp" style="padding: 2rem 0;">
                     <input class="recipe_name form-control" minlength="3" maxlength="24" pattern="[A-Za-zА-Яа-я]+" required name="name" id="order_name" type="text" placeholder="Имя Фамилия">
                 </div>
                 <p class="validate-text validate-text4"></p>
@@ -224,7 +224,6 @@
                     "recipe_pics": recipe_pics
                 },
                 success: function(data) {
-                    console.log(data)
                     if (data.stat == 1) {
                         recipe_id = data.recipe_id;
                         recipe_phone_number = $('.recipe_phone_number').val();
@@ -260,14 +259,13 @@
     }
 
     function resendSms() {
-        console.log($('.recipe_phone_number'));
         $('#loading').show();
         $.ajax({
             url: "<?= base_url() ?>index.php/main/recipeResendSms",
             type: "POST",
             dataType: "json",
             data: {
-                "recipe_phone": $('.recipe_phone_number')[2].value,
+                "recipe_phone": $('.recipe_phone_number').val(),
                 "recipe_id": recipe_id
             },
             success: function(data) {
