@@ -262,7 +262,7 @@
                                                     <div class="ps-product ps-product--inner ps-product_of_the_day user-info_favorite">
                                                         <label>
                                                             <input onclick="deleteProduct(<?= $favorite['id'] ?>)" value="<?php $favorite['id'] ?>" <?php echo $favorite['id']  ?  'checked' : null  ?> type="checkbox" id="red">
-                                                            <svg class="confirmation" id="shape" fill="none" data-id="<?= $favorite['id']   ?>" data-like="0" class="likeClick" width="24" height="24" style="cursor: pointer; float: right;" viewBox="0 0 22 19" xmlns="http://www.w3.org/2000/svg">
+                                                            <svg class="confirmation likeClick " id="shape" fill="none" data-id="<?= $favorite['id']   ?>" data-like="0"  width="24" height="24" style="cursor: pointer; float: right;" viewBox="0 0 22 19" xmlns="http://www.w3.org/2000/svg">
                                                                 <path class="seat" d="M6.20208 0.884277C3.51425 0.884277 1.33459 3.04155 1.33459 5.70309C1.33459 7.85159 2.1864 12.9508 10.5711 18.1054C10.7213 18.1968 10.8938 18.2452 11.0696 18.2452C11.2454 18.2452 11.4178 18.1968 11.568 18.1054C19.9527 12.9508 20.8045 7.85159 20.8045 5.70309C20.8045 3.04155 18.6249 0.884277 15.937 0.884277C13.2492 0.884277 11.0696 3.80477 11.0696 3.80477C11.0696 3.80477 8.8899 0.884277 6.20208 0.884277Z" stroke="#A8A8A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                             </svg>
                                                         </label>
@@ -565,7 +565,7 @@
             $('.toast_success').toast('show');
         }
     });
-    const __likeClicks = document.getElementsByClassName("likeClick")
+    const __likeClicks = document.getElementsByClassName("likeClick");
     for (let i = 0; i < __likeClicks.length; i++) {
         __likeClicks[i].addEventListener('click', function() {
             this.setAttribute('id', 'shape');

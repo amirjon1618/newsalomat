@@ -591,7 +591,8 @@ body {
 label.error {
    color: red;
    display: block;
-   margin-top: 5px;
+   font-size: 14px;
+   position: absolute;
 }
 
 .product-comment_p {

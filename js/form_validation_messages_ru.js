@@ -16,8 +16,8 @@ $.extend($.validator.messages, {
    creditcard: "Введите правильный номер кредитной карты.",
    equalTo: "Введите такое же значение ещё раз.",
    extension: "Выберите файл с правильным расширением.",
-   maxlength: $.validator.format("Введите не больше {0} символов."),
-   minlength: $.validator.format("Введите не меньше {0} символов."),
+   maxlength: $.validator.format("Введите не более {0} символов."),
+   minlength: $.validator.format("Введите не менее {0} символов."),
    rangelength: $.validator.format(
       "Введите значение длиной от {0} до {1} символов."
    ),

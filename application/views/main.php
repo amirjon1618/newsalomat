@@ -424,7 +424,6 @@
     getBlog();
 
     function addToCart(res) {
-        console.log(res)
         max_count_reached = false;
         var array = [];
         var id = res.id;
