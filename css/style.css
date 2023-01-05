@@ -18385,6 +18385,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
         max-width: 100%;
         padding-left: 25px;
     }
+    .recipe_phone_div_inp span {
+        height: 60px !important;
+    }
     .widget:last-child {
         border-bottom: none;
         padding: 20px;
