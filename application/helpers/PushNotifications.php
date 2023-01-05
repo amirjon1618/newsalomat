@@ -6,11 +6,6 @@ class PushNotifications
     {
 
         $data = [
-            "notification" => [
-                "title"     => $title,
-                'body'      => $description,
-                "image"     => $image,
-            ],
             "data" => [
                 "info"          =>  [
                     "id"        => $id,
