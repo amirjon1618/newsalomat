@@ -1215,7 +1215,6 @@
                 "Accept": "application/json",
             }
         })
-
     }
 
     // Get the element with id="defaultOpen" and click on it
@@ -1577,7 +1576,7 @@
                 $(".account-btn").css("display", "none");
                 document.getElementById("account-wrap").style.display = "block";
                 document.getElementById("account-wrap2").style.display = "block";
-                window.location.href = `{base_url}index.php/main/user_info#user-info`
+                // window.location.href = `{base_url}index.php/main/user_info#user-info`
             },
             error: function(error) {
 

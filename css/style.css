@@ -10786,6 +10786,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     font-size: 10px;
     display: flex;
     line-height: 1px;
+    position: absolute;
 }
 
 .ps-product .ps-product__actions {
@@ -18384,6 +18385,9 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     .ps-page--shop .container {
         max-width: 100%;
         padding-left: 25px;
+    }
+    .recipe_phone_div_inp span {
+        height: 60px !important;
     }
     .widget:last-child {
         border-bottom: none;

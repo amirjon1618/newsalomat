@@ -267,9 +267,9 @@
                                                             </svg>
                                                         </label>
 
-                                                        <div class="ps-product__thumbnail ps-product__thumbnail_img_div  hover01">
-                                                            <a href="{base_url}index.php/main/product/2997?from=main">
-                                                                <img class="imgs" src="{base_url}upload_product/<?php echo $favorite['product_pic'] ?>" alt="">
+                                                        <div class="ps-product__thumbnail ps-product__thumbnail_img_div hover01" >
+                                                            <a href="{base_url}index.php/main/product/2997?from=main" style="height: 150px; width: 150px;">
+                                                                <img class="imgs" src="{base_url}upload_product/<?php echo $favorite['product_pic'] ?>" alt="" style="object-fit:contain;">
                                                             </a>
                                                         </div>
 
@@ -332,7 +332,7 @@
                                                         <label for="exampleInputPassword2">Повторите пароль<span class="red-star"> *</span></label>
                                                         <input type="password" class="form-control form-control-save" minlength="8" maxlength="32" pattern="^[a-zA-Z0-9]+$" name="password_confirm" id="second-validate" placeholder="Введите повторно пароль" required>
                                                     </div>
-                                                    <p class="validate-text validate-text4"></p>
+                                                    <p class="validate-text validate-text5" style="margin-top: 100px; margin-left: 16px;"></p>
                                                     <button class="form-btn my-4 mx-3">Сохранить</button>
                                                 </div>
                                             </form>
@@ -403,7 +403,13 @@
                 }
             },
             submitHandler:function(form){
-        $(".enter-btn-password").css("display", "block")
+                if($('.validate-text5')[0].textContent === ''){
+                    $(".enter-btn-password").css("display", "block")
+                    return false;
+                }else{
+                    return false;
+                }
+            
                 form.submit();
             }
 
@@ -462,9 +468,10 @@
 
     $("#second-validate").on('input', () => {
         if ($("#second-validate").val() !== $("#first-validate").val()) {
-            $(".validate-text").text("Пароли не совпадают");
+            $(".validate-text5").text("Пароли не совпадают");
         } else {
-            $(".validate-text").text("");
+
+            $(".validate-text5").text("");
         }
     })
     // $("#first-validate").on('input', () => {
@@ -479,9 +486,9 @@
         e.preventDefault();
        
     })
-    $("#changePass").on("submit", (e) => {
-        e.preventDefault()
-    })
+    // $("#changePass").on("submit", (e) => {
+    //     return false;
+    // })
 
     function deleteProduct(id) {
         const favoriteId = document.querySelector(`[data-favoriteid="${id}"]`);
@@ -565,7 +572,7 @@
             $('.toast_success').toast('show');
         }
     });
-    const __likeClicks = document.getElementsByClassName("likeClick");
+    var __likeClicks = document.getElementsByClassName("likeClick");
     for (let i = 0; i < __likeClicks.length; i++) {
         __likeClicks[i].addEventListener('click', function() {
             this.setAttribute('id', 'shape');
