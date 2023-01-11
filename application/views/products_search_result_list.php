@@ -96,7 +96,7 @@
     <h4 class="text-muted">Ничего не найдено...</h4>
 <?php endif; ?>
 <script>
-    const __likeClicks = document.getElementsByClassName("likeClick")
+    var __likeClicks = document.getElementsByClassName("likeClick")
     for (let i = 0; i < __likeClicks.length; i++) {
         __likeClicks[i].addEventListener('click', function() {
             this.setAttribute('id', 'shape');

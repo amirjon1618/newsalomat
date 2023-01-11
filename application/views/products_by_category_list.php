@@ -273,7 +273,7 @@
         })
     });
 
-    const __likeClicks = document.getElementsByClassName("likeClick")
+    var __likeClicks = document.getElementsByClassName("likeClick")
     for (let i = 0; i < __likeClicks.length; i++) {
         __likeClicks[i].addEventListener('click', function() {
             this.setAttribute('id', 'shape');
