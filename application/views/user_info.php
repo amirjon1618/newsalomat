@@ -404,7 +404,20 @@
             },
             submitHandler:function(form){
                 if($('.validate-text5')[0].textContent === ''){
-                    $(".enter-btn-password").css("display", "block")
+                    $.ajax({
+                    type: "POST",
+                    url: "{base_url}users/forgot_password",
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                    data: {
+                        phone: localStorage.getItem("ver-number"),
+                        password: $('#second-validate').val(),
+                    },
+                    success: function(data) {
+                        $(".enter-btn-password").css("display", "block")
+                    }
+                })
                     return false;
                 }else{
                     return false;
