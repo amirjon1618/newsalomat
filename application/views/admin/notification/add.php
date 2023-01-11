@@ -23,21 +23,25 @@
                     <form role="form" action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Наименование  рассылки</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Вводите ...">
+                            <input type="text" id="name" name="name" required class="form-control" placeholder="Вводите ...">
                         </div>
+                        <p class="validate-text"></p>
                         <div class="form-group">
                             <label>Текст сообщения</label>
-                            <input type="text" id="description" name="description" class="form-control" placeholder="Вводите ...">
+                            <textarea class="recipe_comment form-control" required minlength="3" maxlength="250" name="description" id="description" type="text" placeholder="Вводите ..." style="height: 95px;"></textarea>
+                            <!-- <textarea type="text" id="description" name="description" class="form-control" placeholder="Вводите ..."> -->
+                            <p class="validate-text"></p>
                         </div>
                         <div class="form-group">
                             <label>Тип рассылки</label>
-                            <select id="type" name="type" class="form-control">
+                            <select id="type" name="type" class="form-control" required>
                                 <option value="0">Выберите</option>
                                 <option value="holidays">Праздники</option>
                                 <option value="promotions">Акции</option>
                                 <option value="events">События</option>
                             </select>
                         </div>
+                        <p class="validate-text"></p>
                         <div class="form-group" id="file_div">
                             <label class="userfile_label">Изображение рассылки</label>
                             <input type="file" name="userfile" class="file_inp" size="50" />
@@ -74,6 +78,10 @@
                     required: true
                 },
                 description: {
+                    required: true,
+                    url: true
+                },
+                type: {
                     required: true,
                     url: true
                 },
