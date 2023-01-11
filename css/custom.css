@@ -1009,6 +1009,7 @@ textarea.error {
 
 .recipe_error_msg_code p {
    color: red;
+   font-size: 14px;
 }
 
 .recipe_main_div {
