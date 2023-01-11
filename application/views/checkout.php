@@ -127,7 +127,7 @@
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <input onclick="javascript: (localStorage.getItem('userId')) ? startTrans() : onPsBlockRight()" type="submit" style="height: 4em" value="Оформить заказ" class="ps-btn ps-btn--fullwidth">
+                                    <input onclick="javascript: (localStorage.getItem('userId')) ? startTrans() : onPsBlockRight()" type="submit" style="height: 4em" value="Оформить заказ" class="ps-btn ps-btn--fullwidth btn-disable">
                                     <div class="order-sended h-100 align-items-center justify-content-center">
                                         <div class="order-sended-modal align-items-center justify-content-center">
                                             <div class="page-content">
@@ -355,11 +355,14 @@
                 $(".ps-form__billing-info").hide();
                 $(".checkout_min_sum_div").show();
                 $(".checkout_bContinue_div").hide();
+                document.querySelector('.btn-disable').disabled = true;
+
             } else {
                 $(".checkout_ecom_div").show();
                 $(".ps-form__billing-info").show();
                 $(".checkout_min_sum_div").hide();
                 $(".checkout_bContinue_div").show();
+                
             }
         }
     }

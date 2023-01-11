@@ -28,7 +28,7 @@
                 <h5>Вам отправлено SMS с кодом подтверждения</h5>
                 <input type="number" class="recipe_phone_code" placeholder="Введите код">
                 <div class="recipe_error_msg_code">
-                    <p>Неверный код</p>
+                    <p class="p-2">Неверный код</p>
                 </div>
             </div>
             <h5 id="not_received_sms">Не получили SMS? <span class="resend_code" onclick="resendSms()">Отправить ещё раз</span></h5>
@@ -132,10 +132,6 @@
     var uploadFinished = false;
     // var recipe_sms_id = '';
 
-    $("#formSms").on('submit', (e) => {
-        e.preventDefault();
-        sendSms()
-    })
 
     function file_click() {
         $('#recipe_userfile').click();
@@ -210,7 +206,7 @@
     function sendSms() {
         $('#loading').show();
         var validate = validatePhone($('.recipe_phone_number').val());
-        if (validate) {
+        if (validate) { 
             var upload = $("#user_files").data("kendoUpload"),
                 files2 = upload.getFiles();
             $.ajax({
@@ -227,8 +223,6 @@
                     if (data.stat == 1) {
                         recipe_id = data.recipe_id;
                         recipe_phone_number = $('.recipe_phone_number').val();
-                        $('#recipe_phone_div_phone_number').hide();
-                        $('#recipe_phone_div_phone_code').show();
                         begin();
                         $('#loading').hide();
                     }
@@ -291,6 +285,7 @@
                 'recipe_id': recipe_id
             },
             success: function(data) {
+                sendSms();
                 if (data == 1) {
                     $('.recipe_phone_code').val('');
                     $('#recipe_phone_div_phone_code').hide();
@@ -365,6 +360,13 @@
                     minlength: 3
                 }
             },
+            submitHandler:function(){
+                // sendSms();
+                $('#recipe_phone_div_phone_number').hide(); 
+                $('#recipe_phone_div_phone_code').show();
+
+                return false;
+            }
 
         });
     }

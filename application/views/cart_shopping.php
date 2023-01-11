@@ -66,6 +66,7 @@
                                 <input type="text" name="promo_code" id="promo_code" class="border price-text__input" placeholder="Активировать промо код">
                                 <button class="price-text__btn" onclick="onPromoCode()"><img src="{base_url}img/right-arrow.svg" alt=""></button>
                             </div>
+                            <p class="promo-validate" style="color: red; margin-top: -20px; display: none;">Введен неверный промокод</p>
                         </div>
                         <div class="ps-section__cart-actions">
                             <a class="ps-btn ps-btn--outline checkout" onclick="orderCheckout()" href="{base_url}index.php/main/checkout">
@@ -296,6 +297,10 @@
                 discount = data.discount;
                 result = totalSum - (discount * sum1 / 100);
                 $('.number-currency_total').text(`${Math.round(result)}`);
+                $('.promo-validate').css('display', 'none');
+            },
+            error: function(error) {
+                $('.promo-validate').css('display', 'block');
             }
         });
     }

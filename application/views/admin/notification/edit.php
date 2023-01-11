@@ -17,17 +17,28 @@
                     <h3 class="box-title">Изменить рассылку</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <form role="form" action="" method="POST" enctype="multipart/form-data">
+                <form role="form" action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Наименование  рассылки</label>
-                            <input type="text" id="name" name="name" class="form-control" value="<?= $notification['name']?>" placeholder="Вводите ...">
+                            <input type="text" id="name" name="name" required class="form-control" placeholder="Вводите ...">
                         </div>
+                        <p class="validate-text"></p>
                         <div class="form-group">
                             <label>Текст сообщения</label>
-                            <input type="text" id="description" name="description" class="form-control" value="<?= $notification['description']?>" placeholder="Вводите ...">
+                            <textarea class="recipe_comment form-control" required minlength="3" maxlength="250" name="description" id="description" type="text" placeholder="Вводите ..." style="height: 95px;"></textarea>
+                            <!-- <textarea type="text" id="description" name="description" class="form-control" placeholder="Вводите ..."> -->
+                            <p class="validate-text"></p>
                         </div>
-
-                        <td style="text-align: center;width: 400px;"><a target="_blank" href="{base_url}img/icons/{img}"><img src="{base_url}img/icons/<?= $notification['img']?>" style="width: 400px;" /></a></td>
+                        <div class="form-group">
+                            <label>Тип рассылки</label>
+                            <select id="type" name="type" class="form-control" required>
+                                <option value="0">Выберите</option>
+                                <option value="holidays">Праздники</option>
+                                <option value="promotions">Акции</option>
+                                <option value="events">События</option>
+                            </select>
+                        </div>
+                        <p class="validate-text"></p>
                         <div class="form-group" id="file_div">
                             <label class="userfile_label">Изображение рассылки</label>
                             <input type="file" name="userfile" class="file_inp" size="50" />
@@ -35,7 +46,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
-                            <input type="submit" name="AddBtn" value="Изменить" class="btn btn-primary pull-right" />
+                            <input type="submit" name="AddBtn" value="Создать" class="btn btn-primary pull-right" />
                         </div>
                     </form>
                 </div><!-- /.box-body -->

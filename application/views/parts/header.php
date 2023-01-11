@@ -795,12 +795,11 @@
 <script src="{base_url}js/jquery.validate.min.js"></script>
 <script src="{base_url}js/form_validation_messages_ru.js"></script>
 <script>
+    
     var timer;
-
-    var compareDate = new Date();
-    compareDate.setDate(compareDate.getDate() + 7);
-
     function userTimer() {
+        var compareDate = new Date();
+        compareDate.setDate(compareDate.getDate() + 7);
         timer = setInterval(function() {
             timeBetweenDates(compareDate);
         }, 1000);

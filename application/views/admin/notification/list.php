@@ -9,32 +9,9 @@
         <li class="active">Список</li>
     </ol>
 </section>
-{alert}
+<!-- {alert} -->
 
-<!-- Button HTML (to Trigger Modal) -->
-<div class="bs-example">
-    <!-- Button HTML (to Trigger Modal) -->
 
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h5 class="modal-title">Success!</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Рассылка отправлено успешно.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Button HTML (to Trigger Modal) -->
 
 <!-- Main content -->
 <section class="content">
@@ -64,15 +41,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($list as $item): ?>
+                            <?php foreach(array_reverse($list) as $item): ?>
                             <tr>
-                                <td style="text-align: center"><?= $item['id']?></td>
-                                <td style="text-align: center"><?= $item['name']?></td>
-                                <td style="text-align: center"><?= $item['description']?></td>
-                                <td style="width: 200px; text-align: center;"><span class="label" style="background:
+                                <td style="text-align: center;"><?= $item['id']?></td>
+                                <td style="text-align: center; width: 256px;"><?= $item['name']?></td>
+                                <td style="text-align: center;"><?= $item['description']?></td>
+                                <td style="width: 195px; text-align: center;"><span class="label" style="font-size: 16px; background:
                                     <?php
                                     if ($item['type']=='holidays'){
-                                        echo '#ffff00';
+                                        echo '#199b10';
                                     }
                                     if ($item['type']=='promotions'){
                                         echo '#ff0000';
@@ -80,7 +57,7 @@
                                     if ($item['type']=='events'){
                                         echo '#00bfff';
                                     }?>
-                                ; border-radius:.5em"><?php
+                                ; border-radius: 5px;"><?php
                                         if ($item['type']=='holidays'){
                                             echo 'Праздники';
                                         }
@@ -90,7 +67,7 @@
                                         if ($item['type']=='events'){
                                             echo 'События';
                                         }?></span></td>
-                                <td style="text-align: center;width: 400px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 400px;" /></a></td>
+                                <td style="text-align: center;width: 256px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 128px; border-radius: 10px;" /></a></td>
 
                                 <td  style="text-align: center;width: 100px;">
                                     <a class="btn" onclick="sendNotification(<?= $item['id']?>)">
@@ -117,6 +94,31 @@
 
 </section><!-- /.content -->
 
+<!-- Button HTML (to Trigger Modal) -->
+<!-- <div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+
+    <!-- Modal HTML -->
+    <!-- <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Success!</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Рассылка отправлено успешно.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Button HTML (to Trigger Modal) -->
+
 <style>
     .bs-example{
         margin: 20px;
@@ -129,12 +131,8 @@
             $("#myModal").modal('show');
         });
     });
-</script>
-
-<script>
     function sendNotification(id) {
         $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
         })
     }
-
 </script>
