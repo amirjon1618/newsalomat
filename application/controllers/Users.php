@@ -768,6 +768,12 @@ class Users extends REST_Controller
                 $this->db->where("user_id", $user_id);
                 $this->db->update("users", ['onesignal_id' => '']);
             }
+            $oneS = $this->input->post('oneSignalId');
+            if (isset($oneS)) {
+                if (!empty($oneS))
+                    $this->db->where("onesignal_id", $oneS);
+                    $this->db->update("users", ['onesignal_id' => '']);
+            }
 
             delete_cookie("auth_id");
             $this->session->unset_userdata(array('user_id'));
