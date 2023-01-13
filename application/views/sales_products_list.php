@@ -39,13 +39,17 @@
                                             <?php endif; ?>
                                         </select><span>(<?= $cat_p['review_count'] ?>)</span>
                                     </div>
-                                    <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
-                                            <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
-                                            <?php if ($cat_p['product_old_price'] != 0) : ?><del><?= $cat_p['product_old_price'] ?> </del><?php endif; ?>
-                                            <?= $cat_p['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
-
-                                    </p>
-
+                                    <?php if ($cat_p['total_count_in_store'] > 0) : ?>
+                                        <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
+                                                <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
+                                                <?php if ($cat_p['product_old_price'] != 0) : ?><del><?= $cat_p['product_old_price'] ?> </del><?php endif; ?>
+                                                <?= $cat_p['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
+                                        </p>
+                                        <?php else :?>
+                                        <p class="ps-product__price sale prods_slider">
+                                                <button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                        </p>
+                                        <?php endif; ?>
                                 </div>
                             </div>
                         </div>

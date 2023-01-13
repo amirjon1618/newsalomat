@@ -92,7 +92,9 @@
                                                 <?php if ($prod_sugg['product_old_price'] != 0) : ?><del><?= $prod_sugg['product_old_price'] ?> </del><?php endif; ?>
                                                 <?= $prod_sugg['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
                                         </p>
-
+                                        <p class="ps-product__price sale prods_slider">
+                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

@@ -468,9 +468,9 @@
                 <hr>
             </div>
             <div class="ps-section__content">
-                <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="5" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
+                <div class="ps-carousel--nav  owl-slider  " data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="5" data-owl-item-xs="1" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on" >
                     <?php foreach ($prods_suggestions as $prod_sugg) : ?>
-                        <div class="ps-product ps-product--inner ps-product_of_the_day">
+                        <div class="ps-product ps-product--inner ps-product_of_the_day" data-id="<?php echo  $prod_sugg['id'] ?>">
                             <label>
                                 <input value="<?php $prod_sugg['id'] ?>" <?php echo $prod_sugg['is_favorite'] == 1 ?  'checked' : null  ?> type="checkbox" id="red">
                                 <svg id="shape" fill="none" data-id="<?= $prod_sugg['id']   ?>" data-like="0" class="likeClick" width="24" height="24" style="cursor: pointer; float: right;" viewBox="0 0 22 19" xmlns="http://www.w3.org/2000/svg">
@@ -505,9 +505,17 @@
                                             <?php endif; ?>
                                         </select><span>(<?= $prod_sugg['review_count'] ?>)</span>
                                     </div>
-                                    <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span">
-                                            <?php if ($prod_sugg['product_old_price'] != 0) : ?><del><?= $prod_sugg['product_old_price'] ?> </del><?php endif; ?>
-                                            <?= $prod_sugg['product_price'] ?> c. </span><button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="ps-btn btn-cart_cat">В корзину</button></p>
+                                    <?php if ($prod_sugg['total_count_in_store'] > 0) : ?>
+                                        <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
+                                                <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
+                                                <?php if ($prod_sugg['product_old_price'] != 0) : ?><del><?= $prod_sugg['product_old_price'] ?> </del><?php endif; ?>
+                                                <?= $prod_sugg['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
+                                        </p>
+                                        <?php else :?>
+                                        <p class="ps-product__price sale prods_slider">
+                                                <button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                        </p>
+                                        <?php endif; ?>
 
                                 </div>
                             </div>
@@ -539,6 +547,7 @@
 <script src="{base_url}js/jquery.validate.min.js"></script>
 <script src="{base_url}js/form_validation_messages_ru.js"></script>
 <script>
+    
     const idCount = count_input.parentElement.dataset.id
     const _elem = JSON.parse(localStorage.getItem("product_list"))
     let resCount;
@@ -862,7 +871,7 @@
                 var mydata = $.parseJSON(localStorage.getItem("product_list"));
                 mydata.forEach(function(elem, index) {
                     if (elem.product_id == id) {
-                        elem.product_count = resCount;
+                        elem.product_count += count;
 
                         // if (elem.product_count > total_count) {
                         //     elem.product_count = total_count;
@@ -885,12 +894,16 @@
                 //     path: '/'
                 // });
                 localStorage.setItem("product_list", JSON.stringify(mydata))
+                onAddBorder()
+
             } else {
                 array.push(obj);
                 // $.cookie("product_list", JSON.stringify(array), {
                 //     path: '/'
                 // });
                 localStorage.setItem("product_list", JSON.stringify(array))
+                onAddBorder()
+
             }
             if (!max_count_reached) {
                 $('.span_added_prod_name').text('' + name);
@@ -904,6 +917,8 @@
             set_prods_header();
         }
     }
+    onAddBorder();
+
 </script>
 <style>
     label {
