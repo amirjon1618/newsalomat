@@ -157,7 +157,7 @@ class Indication extends CI_Model
                           INNER JOIN category_product cp ON p.id=cp.product_id
                           INNER JOIN category c ON cp.category_id=c.id
                           ,(SELECT @r := 0, @pcol1 := null) x
-                        WHERE p.product_price >' . $min_price . ' AND p.product_price <' . $max_price .' AND ip.indications_id='. $ind_id .' ORDER BY p.id, c.id
+                        WHERE p.product_price >=' . $min_price . ' AND p.product_price <=' . $max_price .' AND ip.indications_id='. $ind_id .' ORDER BY p.id, c.id
                         ) t
                         WHERE t.rn=1
                         LIMIT ' . $this->per_page . '' . ($current==1 ? '' : ', ') . ((($current - 1) * $this->per_page)==0 ? '' : (($current - 1) * $this->per_page));

@@ -43,7 +43,7 @@ class Categories extends REST_Controller
         if ($sort_by == '') {
             $sort_by = 'asc';
         } else if ($sort_by == 'pr') {
-            $sort_by = 'product_rating';
+            $sort_by = 'pr';
         }
         $category_with_parents = $this->category->get_parent_categories($id);
 
