@@ -798,6 +798,7 @@
     
     var timer;
     function userTimer() {
+        clearInterval(timer);
         var compareDate = new Date();
         compareDate.setDate(compareDate.getDate() + 7);
         timer = setInterval(function() {
@@ -852,7 +853,7 @@
 
     function onAddBorder() {
         const __products = JSON.parse(localStorage.getItem("product_list"));
-        const __categores = Array.from(document.querySelectorAll(".ps-product--simple, .main-ps-product, .ps-product--inner-sales, .ps-product--wide"));
+        const __categores = Array.from(document.querySelectorAll(".ps-product--simple, .main-ps-product, .ps-product--inner-sales, .ps-product--wide,.ps-product--inner"));
 
         if (__products !== null) {
             __categores.forEach(elem => {
@@ -866,7 +867,7 @@
     }
 
     function remove_from_header_cart(id) {
-        const __categores = Array.from(document.querySelectorAll(".ps-product--simple, .main-ps-product, .ps-product--inner-sales, .ps-product--wide"));
+        const __categores = Array.from(document.querySelectorAll(".ps-product--simple, .main-ps-product, .ps-product--inner-sales, .ps-product--wide,.ps-product--inner"));
         __categores.forEach(elem => {
             if (Number(elem.dataset.id) === id) {
                 elem.classList.remove("main-products_border")
@@ -1609,12 +1610,27 @@
     $("#second-password2").on('input', () => {
         if ($("#second-password2").val() !== $("#first-password2").val()) {
             $(".validate-text").text("Пароли не совпадают");
-            $("#ef7").prop("disabled", true)
-
+            $("#ef7").prop("disabled", true);
         } else {
             $(".validate-text").text("");
             $("#ef7").prop("disabled", false)
 
+        }
+    })
+
+    $("#first-password2").on('input', () => {
+        if ($("#first-password2").css("display", "block")) {
+            $(".validate-text").text("");
+        }else {
+            $(".validate-text").text("");
+        }
+    })
+
+    $("#second-password2").on('input', () => {
+        if ($("#second-password2").css("display", "block")) {
+            $(".validate-text").text("");
+        }else{
+            $(".validate-text").text("");
         }
     })
 
@@ -1685,10 +1701,10 @@
     })
 
     function onConfirm() {
-        let closeBtn = confirm("Вы уверены? Все введенные данные стираются!");
-        if (closeBtn) {
-            window.location.reload();
-        }
+        // let closeBtn = confirm("Вы уверены? Все введенные данные стираются!");
+        // if (closeBtn) {
+        // }
+        window.location.reload();
     }
     // $('.form-detail_validate').val('');
         // removeAll();
