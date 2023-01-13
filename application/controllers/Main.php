@@ -203,7 +203,7 @@ class Main extends CI_Controller
         if ($sort_by == '') {
             $sort_by = 'asc';
         } else if ($sort_by == 'pr') {
-            $sort_by = 'pr';
+            $sort_by = 'product_rating';
         }
 
         $category_with_parents = $this->category->get_parent_categories($id);

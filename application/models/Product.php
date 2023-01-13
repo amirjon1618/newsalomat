@@ -601,6 +601,8 @@ class Product extends CI_Model
     //...products with total_count > 0
     public function get_products_by_category($id, $sort_by, $current, $min_price = '', $max_price = '')
     {
+//        var_dump($current);
+
         if(empty($current)){
             $current = 1;
         }
@@ -702,7 +704,7 @@ class Product extends CI_Model
             } else {
                 $sort_rating = true;
             }
-            $this->db->limit($this->per_page, ($current) * $this->per_page);
+            $this->db->limit($this->per_page, ($current - 1) * $this->per_page);
             $query = $this->db->get();
 
             $query_string = $this->db->last_query();
@@ -812,7 +814,6 @@ class Product extends CI_Model
 
     public function get_rating($id)
     {
-
         $array = array();
         $q_count = $this->db->query("SELECT COUNT(*) as count FROM `product_rating` WHERE `prod_id` = " . $id . " AND `status` = 1");
         $arr_count = $q_count->result_array();

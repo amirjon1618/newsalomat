@@ -222,7 +222,7 @@ class Products extends REST_Controller {
         if ($sort_by == '') {
             $sort_by = 'asc';
         } else if ($sort_by == 'pr') {
-            $sort_by = 'pr';
+            $sort_by = 'product_rating';
         }
 
         $category_with_parents = $this->category->get_parent_categories($id);
@@ -232,7 +232,7 @@ class Products extends REST_Controller {
             return;
         }
 
-        $res = $this->product->get_products_by_category($id,  $sort_by,$current_page); //returns products with total count > 0
+        $res = $this->product->get_products_by_category($id, $current_page, $sort_by); //returns products with total count > 0
         $data['total_products'] = $res['total_products'];
         $data['category_with_parents'] = $category_with_parents;
         unset($res['total_products']);
