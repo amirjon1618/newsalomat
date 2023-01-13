@@ -739,4 +739,51 @@ class Users extends REST_Controller
             $this->response($updated, REST_Controller::HTTP_OK);
         }
     }
+
+    public function logout_post()
+    {
+        header("Access-Control-Allow-Origin: *");
+
+        // Load Authorization token
+        $this->load->library('Authorization_Token');
+
+        // User Token Validation
+
+        $is_valid_token = $this->authorization_token->validateToken();
+
+        if (!empty($is_valid_token) && $is_valid_token['status'] === TRUE) {
+            if (!empty($is_valid_token)) {
+                $headers = $this->input->request_headers();
+                $platform = $headers['platform'] ?? 'android';
+
+                if ($platform == 'IOS') {
+                    $data = json_decode(file_get_contents('php://input'), true);
+                    $_POST = $data;
+                }
+            }
+
+            $user_id = get_cookie("auth_id");
+            if (isset($user_id)) {
+                if (!empty($user_pic))
+                $this->db->where("user_id", $user_id);
+                $this->db->update("users", ['onesignal_id' => '']);
+            }
+
+            delete_cookie("auth_id");
+            $this->session->unset_userdata(array('user_id'));
+            $this->session->sess_destroy();
+
+            $message = [
+                'status' => FALSE,
+                'message' => 'You have successfully logged out!'
+            ];
+            $this->response($message, REST_Controller::HTTP_OK);
+        } else {
+            $message = [
+                'status' => FALSE,
+                'message' => $is_valid_token['message']
+            ];
+            $this->response($message, REST_Controller::HTTP_UNAUTHORIZED);
+        }
+    }
 }
