@@ -774,7 +774,7 @@ class Users extends REST_Controller
             $this->session->sess_destroy();
 
             $message = [
-                'status' => FALSE,
+                'status' => true,
                 'message' => 'You have successfully logged out!'
             ];
             $this->response($message, REST_Controller::HTTP_OK);
