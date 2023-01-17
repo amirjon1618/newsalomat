@@ -31,10 +31,11 @@ class Search extends REST_Controller
             $this->input->get("user_id")
 
         );
+//        var_dump($res);
         if ($res) {
             $newArray  = $res;
             if (sizeof($newArray) != 0) {
-                array_multisort(array_column($newArray, 'product_price'), SORT_DESC, $newArray);
+                array_multisort(array_column($newArray, 'product_price'), SORT_DESC);
                 $res['srch_prod_max_pr'] = $newArray[0]['product_price'];
             }
         }
@@ -75,7 +76,7 @@ class Search extends REST_Controller
         if ($res) {
             $newArray  = $res;
             if (sizeof($newArray) != 0) {
-                array_multisort(array_column($newArray, 'product_price'), SORT_DESC, $newArray);
+                array_multisort(array_column($newArray, 'product_price'), SORT_DESC);
                 $res['srch_prod_max_pr'] = $newArray[0]['product_price'];
             }
         }
