@@ -449,20 +449,21 @@ class Main extends CI_Controller
         $data['categories'] = $this->category->get_all();
         $data['ad_mini'] = $this->advertisement->get_all('mini_pic');
 
-        $data['srch_inp'] = $this->input->get("srch_pr_inp");
-        $res = $this->product->search_for_prod(
-            $this->input->get("srch_pr_inp")
-        );
+        $search_result = $this->replaceStr($this->input->get("srch_pr_inp"));
+        $data['srch_inp'] = $search_result;
+        $res = $this->product->search_for_prod($search_result);
+
+        var_dump($res['srch_prod_max_pr']);
         if (isset($res['srch_prod_max_pr'])) {
             $data['srch_prod_max_price'] = $res['srch_prod_max_pr'];
         } else {
             $data['srch_prod_max_price'] = 9999;
         }
 
-        $data['title'] = 'Поиск: ' . $this->input->get("srch_pr_inp") . ' на Salomat.tj';
+        $data['title'] = 'Поиск: ' . $search_result . ' на Salomat.tj';
 
         $data['content'] = $this->parser->parse('product_search_result', $data, TRUE);
-        $data['auth'] =   $this->input->cookie('auth_id');
+        $data['auth'] = $this->input->cookie('auth_id');
         $this->load->library('session');
         $user = $this->getUser($this->session->userdata('user_id'));
         $data['name'] =  $user['name'] ?? null;
@@ -545,7 +546,6 @@ class Main extends CI_Controller
 
     public function blogPopular()
     {
-
         $data = array('base_url' => base_url());
         $data['tags'] = $this->tag->get_all();
         $data['categories'] = $this->category->get_all();
@@ -615,7 +615,6 @@ class Main extends CI_Controller
         }
 
         $data['orders'] = $order_product ?? null;
-
         $data['favorites'] = $this->user_favorite($this->session->userdata('user_id'));
         $data['content'] = $this->parser->parse('user_info', $data, TRUE);
         $data['header'] = $this->parser->parse('parts/header', $data, TRUE);
@@ -642,10 +641,32 @@ class Main extends CI_Controller
         ));
     }
 
+    private function replaceStr($searchText)
+    {
+        $cyr=array(
+            "Щ", "Ш", "Ч","Ц", "Ю", "Я", "Ж","А","Б","В","Г","Д","Е","Ё","З","И","Й","К","Л","М","Н", "О","П","Р",
+            "С","Т","У","Ф","Х","Ь","Ы","Ъ", "Э","Є", "Ї","І", "щ", "ш", "ч","ц", "ю", "я", "ж","а","б","в", "г","д",
+            "е","ё","з","и","й","к","л","м","н", "о","п","р","с","т","у","ф","х","ь","ы","ъ", "э","є", "ї","і"
+        );
+
+        $lat=array(
+            "Shch","Sh","Ch","C","Yu","Ya","J","A","B","V","G","D","E","E","Z","I","y","K","L","M","N", "O","P","R","S",
+            "T","U","F","H","", "Y","","E","E","Yi","I","shch","sh","ch","c","Yu","Ya","j","a","b","v", "g","d","e","e",
+            "z","i","y","k","l","m","n", "o","p","r","s","t","u","f","h", "", "y","" ,"e","e","yi","i"
+        );
+
+        $searchText = str_replace($lat,$cyr,$searchText);
+        $searchText = str_replace("_"," ",$searchText);
+
+        return $searchText;
+    }
+
     public function search_product()
     {
         if ($this->input->get("q")) {
-            $res = $this->product->get_prod_by_name_main($this->input->get("q"));
+            $string = $this->replaceStr($this->input->get("q"));
+            $res = $this->product->get_prod_by_name_main($string);
+
             echo json_encode($res);
         }
     }
@@ -805,6 +826,34 @@ class Main extends CI_Controller
         $data['header'] = $this->parser->parse('parts/header', $data, TRUE);
         $data['footer'] = $this->parser->parse('parts/footer', $data, TRUE);
         $this->parser->parse('template', $data);
+    }
+
+
+    public function web_view($id)
+    {
+        $data = array('base_url' => base_url(), 'alert' => '');
+        $this->load->model('page');
+
+        $data['categories'] = $this->category->get_all();
+        $page_info = $this->page->get($id);
+        $data['page_title'] = $page_info['name'];
+        $data['title'] = '';
+        $data['text'] = '';
+        if (sizeof($page_info) != 0) {
+            $data['title'] = $page_info['name'];
+            $data['text'] = $page_info['about'];
+        }
+        $data['content'] = $this->parser->parse('page', $data, TRUE);
+        $data['auth'] =   $this->input->cookie('auth_id');
+        $this->load->library('session');
+        $user = $this->getUser($this->session->userdata('user_id'));
+        $data['name'] =  $user['name'] ?? null;
+        $data['image'] =  $user['image'] ?? null;
+        $data['email'] =  $user['email'] ?? null;;
+        $data['header'] = $this->parser->parse('parts/header', $data, TRUE);
+        $data['footer'] = $this->parser->parse('parts/footer', $data, TRUE);
+
+        $this->parser->parse('web_view', $data);
     }
 
     public function recipe()

@@ -1246,7 +1246,7 @@ class Product extends CI_Model
             $newArray  = $array;
             if (sizeof($newArray) != 0) {
                 array_multisort(array_column($newArray, 'product_price'), SORT_DESC, $newArray);
-//                $array['srch_prod_max_pr'] = $newArray[0]['product_price'];
+                $array['srch_prod_max_pr'] = $newArray[0]['product_price'];
 
             }
         }
