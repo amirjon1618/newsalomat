@@ -26,7 +26,7 @@ class Search extends REST_Controller
        $srch_pr_inp = $this->replaceStr($this->input->get("srch_pr_inp"));
         $data['srch_inp'] = $srch_pr_inp;
 
-        $res = $this->product->search_for_prod(
+        $res = $this->product->search_for_product(
             $srch_pr_inp,
             $this->input->get("min_price"),
             $this->input->get("max_price"),
@@ -64,14 +64,14 @@ class Search extends REST_Controller
     public function index_get()
     {
         $srch_pr_inp = $this->replaceStr($this->input->get("srch_pr_inp"));
-        $res = $this->product->search_for_prod(
+        $res = $this->product->search_for_product(
             $srch_pr_inp,
             $min_price = '',
             $max_price = '',
             $this->input->get("user_id")
         );
 
-        $blogs = array();
+        $blogs = [];
         foreach ($res as $key => $value)
             $blogs[$key] = $value;
 
