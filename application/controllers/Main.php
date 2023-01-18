@@ -453,7 +453,7 @@ class Main extends CI_Controller
         $data['srch_inp'] = $search_result;
         $res = $this->product->search_for_prod($search_result);
 
-        var_dump($res['srch_prod_max_pr']);
+
         if (isset($res['srch_prod_max_pr'])) {
             $data['srch_prod_max_price'] = $res['srch_prod_max_pr'];
         } else {
