@@ -15,17 +15,7 @@
                             <?php if ($category_products['product_old_price'] != 0) : ?>
                                 <del><?= $category_products['product_old_price'] ?> смн.</del><?php endif; ?>
                         </span>
-                        <?php if ($category_products['total_count_in_store'] > 0) : ?>
-                            <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
-                                    <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
-                                    <?php if ($category_products['product_old_price'] != 0) : ?><del><?= $category_products['product_old_price'] ?> </del><?php endif; ?>
-                                    <?= $category_products['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($category_products) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
-                            </p>
-                            <?php else :?>
-                            <p class="ps-product__price sale prods_slider">
-                                    <button onclick='addToCart(res = <?= json_encode($category_products) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 100%;">Нет в наличии</button>
-                            </p>
-                        <?php endif; ?>
+                       <button onclick='addToCart(prod = <?= json_encode($category_products) ?>)' class="ps-btn ">В корзину</button>
                     </div>
                 </div>
             </article>
@@ -564,7 +554,7 @@
 <script src="{base_url}js/form_validation_messages_ru.js"></script>
 <script>
     
-    const idCount = count_input.parentElement.dataset.id
+    const idCount = document.getElementById("count_input").parentElement.dataset.id;
     const _elem = JSON.parse(localStorage.getItem("product_list"))
     let resCount;
     try {
