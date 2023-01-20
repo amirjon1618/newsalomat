@@ -2292,6 +2292,7 @@ class Admin extends CI_Controller
 
         $recipe_pics = $this->recipe->get_recipe_pics($id);
         $data['list'] = $recipe_pics;
+        //$data['recipe'] = $this->recipe->get_recipe_by_id($id);
 
 
         if ($this->input->get("do") == "updateok") {

@@ -39,20 +39,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {list}
-                            <tr>
-                                <td>{id}</td>
-                                <td>{recipe_phone}</td>
-                                <td>{created_at}</td>
-                                <td>{full_name}</td>
-                                <td>{comment}</td>
-                                <td style="text-align: center;width: 100px;">
-                                    <a target="_blank" href="{base_url}upload_recipe/{pic}">
-                                        <img src="{base_url}upload_recipe/{pic}" style="width: 100px; height: 50px;" />
-                                    </a>
-                                </td>
-                            </tr>
-                            {/list}
+                                <tr>
+                                    <td><?= $recipe['id']?></td>
+                                    <td><?= $recipe['recipe_phone']?></td>
+                                    <td><?= $recipe['created_at']?></td>
+                                    <td><?= $recipe['full_name']?></td>
+                                    <td><?= $recipe['comment']?></td>
+                                    {list}
+                                        <td style="text-align: center;width: 100px;">
+                                            <a target="_blank" href="{base_url}upload_recipe/{pic}">
+                                                <img src="{base_url}upload_recipe/{pic}" style="width: 100px; height: 50px;" />
+                                            </a>
+                                        </td>
+                                    {/list}
+                                </tr>
                         </tbody>
                     </table>
 
@@ -101,6 +101,26 @@
 
 </script>
 <script>
+        function getRecipePhotos(id) {
+        $('#edit_loading').show();
+        $('.recipe_pics_tbody').html('');
+        $.getJSON('<?= $base_url ?>index.php/api/GetRecipePics/' + id, function(data, status) {
+        $('.modal-title').text(data.recipe_phone + ' фотографии');
+        data.pics.forEach(function(item, index) {
+            var html = `<tr> +
+                        <td>${item.id}</td>
+                        <td  style="text-align: center;width: 100px;">
+                        <a target="_blank" href="${item.base_url}upload_recipe/${item.pic}">
+                        <img src="${item.base_url}upload_recipe/${item.pic}" style="width: 100 px;" />
+                        </a>
+                        </td>
+                    </tr>`;
+            $('.recipe_pics_tbody').append(html);
+        })
+        $('#edit_loading').hide();
+        $('#recipePics').modal('show');
+        });
+    }
     $(function() {
         $('#TableUser').DataTable({
             "paging": false,

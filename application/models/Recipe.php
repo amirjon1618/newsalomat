@@ -26,7 +26,7 @@ class Recipe extends CI_Model
         return $array;
     }
 
-    public function get_all()
+    public function get_all() 
     {
         $array = array();
         $this->db->select('*');
@@ -41,6 +41,17 @@ class Recipe extends CI_Model
             $row['status_color'] = isset($recipe_status['status_color']) ? $recipe_status['status_color'] : 'white';
             $array[] = $row;
         }
+        return $array;
+    }
+    public function get_recipe_by_id($id) 
+    {
+        $array = array();
+        $this->db->select('*');
+        $this->db->from('recipe');
+        $this->db->where('id', $id);
+        $this->db->order_by('created_at', 'desc');
+        // $this->db->where('status_id', 1);
+        $result = $this->db->get();
         return $array;
     }
     public function get_all_waiting()
