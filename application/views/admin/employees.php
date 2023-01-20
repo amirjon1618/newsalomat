@@ -58,10 +58,10 @@
           <a href="<?= base_url("admin/users");?>" class="btn btn-info" style="display: flex; margin: 0 10px;">
             Пользователь
           </a>
-          <a href="<?= base_url("admin/employees");?>" class="btn btn-info" style="display: flex; margin: 0 10px;">
+          <a href="<?= base_url("admin/employees");?>" class="btn btn-info active" style="display: flex; margin: 0 10px;">
             Сотрудник
           </a>
-          <a href="<?= base_url("admin/administrators");?>" class="btn btn-info" style="display: flex; margin: 0 10px;">
+          <a href="<?= base_url("admin/administrators");?>" class="btn btn-info " style="display: flex; margin: 0 10px;">
             Администратор
           </a>
         </div>

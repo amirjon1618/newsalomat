@@ -31,6 +31,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Телефон</th>
+                                <th>Дата и время</th>
+                                <th>Имя Фамилия</th>
+                                <th>Комментарий</th>
                                 <th>ФОТОГРАФИЙ</th>
                             </tr>
                         </thead>
@@ -38,9 +42,13 @@
                             {list}
                             <tr>
                                 <td>{id}</td>
+                                <td>{recipe_phone}</td>
+                                <td>{created_at}</td>
+                                <td>{full_name}</td>
+                                <td>{comment}</td>
                                 <td style="text-align: center;width: 100px;">
                                     <a target="_blank" href="{base_url}upload_recipe/{pic}">
-                                        <img src="{base_url}upload_recipe/{pic}" style="width: 100px;" />
+                                        <img src="{base_url}upload_recipe/{pic}" style="width: 100px; height: 50px;" />
                                     </a>
                                 </td>
                             </tr>

@@ -67,7 +67,7 @@
                                         if ($item['type']=='events'){
                                             echo 'События';
                                         }?></span></td>
-                                <td style="text-align: center;width: 256px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 128px; border-radius: 10px;" /></a></td>
+                                <td style="text-align: center;width: 256px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 100px; border-radius: 10px;" /></a></td>
 
                                 <td  style="text-align: center;width: 100px;">
                                     <a class="btn" onclick="sendNotification(<?= $item['id']?>)">
@@ -132,7 +132,11 @@
         });
     });
     function sendNotification(id) {
-        $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
-        })
+        let sendNot = confirm('Вы уверены что хотите отправить рассылку ?');
+        if(sendNot){
+            $.post('<?= $base_url ?>index.php/PushNotification/sendPushNotification/' + id , res => {
+                
+            })
+        }
     }
 </script>

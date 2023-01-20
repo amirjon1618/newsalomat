@@ -93,8 +93,8 @@
                     <!-- <td>Через кошелёк <?= $item['wallet_name'] ?></td> -->
                   <!-- <?php endif; ?> -->
                   <td><?= $item['delivery_name'];?></td>
-                  <td><?= $item['delivery_price'];?></td>
-                  <td><?= $item['total_price'];?></td>
+                  <td><?= $item['delivery_price'];?> сом</td>
+                  <td><?= $item['total_price'];?> сом</td>
                   <td><?= $item['created_at'] ?></td>
                   <td style="width: 100px;"><span class="label" style="background:<?= $item['status_color'] ?>; border-radius:.5em"><?= $item['status'] ?></span></td>
                   <td style="text-align: center;width: 100px;"> <a class="" href="{base_url}index.php/Admin/orderProducts/<?= $item['id'] ?>"><i style="font-size: 24px;color:grey" class="fa fa-edit"> </i></a></td>

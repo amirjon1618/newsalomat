@@ -87,14 +87,17 @@
                                                 <?php endif; ?>
                                             </select><span>(<?= $prod_sugg['review_count'] ?>)</span>
                                         </div>
+                                        <?php if ($prod_sugg['total_count_in_store'] > 0) : ?>
                                         <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
                                                 <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
                                                 <?php if ($prod_sugg['product_old_price'] != 0) : ?><del><?= $prod_sugg['product_old_price'] ?> </del><?php endif; ?>
                                                 <?= $prod_sugg['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
                                         </p>
+                                        <?php else :?>
                                         <p class="ps-product__price sale prods_slider">
-                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                                <button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
                                         </p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

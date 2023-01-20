@@ -55,6 +55,15 @@ class User extends CI_Model
             $row['enabled_str'] = 'false';
             $row['base_url'] = base_url();
 
+            $row['access_type'] = '';
+
+            if ($row['access'] == 10)
+                $row['access_type'] = 'Пользователь';
+            if ($row['access'] == 60)
+                $row['access_type'] = 'Сотрудник';
+            if ($row['access'] == 100)
+                $row['access_type'] = 'Администратор';
+
             if ($row['enabled'] == '1')
                 $row['enabled_str'] = 'true';
             $array[] = $row;
@@ -63,6 +72,85 @@ class User extends CI_Model
     }
 
     public function getAllUser2()
+    {
+        $array = array();
+        $this->db->select("*");
+        $this->db->from('users');
+        $this->db->order_by("user_id", "desc");
+        //$this->db->where_not_in('user_id')
+        $query = $this->db->get();
+        foreach ($query->result_array() as $row) {
+            $row['enabled_str'] = 'false';
+            $row['access_type'] = '';
+
+            if ($row['access'])
+                $row['access_type'] = 'Пользователь';
+            if ($row['access'] == 60)
+                $row['access_type'] = 'Сотрудник';
+            if ($row['access'] == 100)
+                $row['access_type'] = 'Администратор';
+
+            if ($row['enabled'] == '1')
+                $row['enabled_str'] = 'true';
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+    public function usersByType()
+    {
+        $array = array();
+        $this->db->select("*");
+        $this->db->from('users');
+        $this->db->where('access', );
+        $this->db->order_by("user_id", "desc");
+        //$this->db->where_not_in('user_id')
+        $query = $this->db->get();
+        foreach ($query->result_array() as $row) {
+            $row['enabled_str'] = 'false';
+            $row['access_type'] = '';
+
+            if ($row['access'])
+                $row['access_type'] = 'Пользователь';
+            if ($row['access'] == 60)
+                $row['access_type'] = 'Сотрудник';
+            if ($row['access'] == 100)
+                $row['access_type'] = 'Администратор';
+
+            if ($row['enabled'] == '1')
+                $row['enabled_str'] = 'true';
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+    public function employeesByType()
+    {
+        $array = array();
+        $this->db->select("*");
+        $this->db->from('users');
+        $this->db->order_by("user_id", "desc");
+        //$this->db->where_not_in('user_id')
+        $query = $this->db->get();
+        foreach ($query->result_array() as $row) {
+            $row['enabled_str'] = 'false';
+            $row['access_type'] = '';
+
+            if ($row['access'])
+                $row['access_type'] = 'Пользователь';
+            if ($row['access'] == 60)
+                $row['access_type'] = 'Сотрудник';
+            if ($row['access'] == 100)
+                $row['access_type'] = 'Администратор';
+
+            if ($row['enabled'] == '1')
+                $row['enabled_str'] = 'true';
+            $array[] = $row;
+        }
+        return $array;
+    }
+
+    public function adminsByType()
     {
         $array = array();
         $this->db->select("*");

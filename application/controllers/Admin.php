@@ -585,6 +585,78 @@ class Admin extends CI_Controller
         $this->template($data);
     }
 
+    public function Users()
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+
+        $data = array("base_url" => base_url(), "alert" => "");
+        $this->load->model('user');
+
+        if ($this->input->get("do") == "addok") {
+            $data['alert'] = $this->createAlertInfo('Успешно добавлен');
+        } else if ($this->input->get("do") == "updateok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "extendok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "remove") {
+            $this->user->delete($this->input->get("user_id"));
+            $data['alert'] = $this->createAlertInfo('Успешно удален');
+        }
+
+        $data['clientList'] = $this->user->getUserByAccess(10);
+        $data['content'] = $this->parser->parse('admin/users', $data, true);
+        $this->template($data);
+    }
+
+    public function Employees()
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+
+        $data = array("base_url" => base_url(), "alert" => "");
+        $this->load->model('user');
+
+        if ($this->input->get("do") == "addok") {
+            $data['alert'] = $this->createAlertInfo('Успешно добавлен');
+        } else if ($this->input->get("do") == "updateok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "extendok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "remove") {
+            $this->user->delete($this->input->get("user_id"));
+            $data['alert'] = $this->createAlertInfo('Успешно удален');
+        }
+
+        $data['clientList'] = $this->user->getUserByAccess(60);
+        $data['content'] = $this->parser->parse('admin/employees', $data, true);
+        $this->template($data);
+    }
+
+    public function Administrators()
+    {
+        if ($this->user->myData['access'] != 100)
+            die();
+
+        $data = array("base_url" => base_url(), "alert" => "");
+        $this->load->model('user');
+
+        if ($this->input->get("do") == "addok") {
+            $data['alert'] = $this->createAlertInfo('Успешно добавлен');
+        } else if ($this->input->get("do") == "updateok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "extendok") {
+            $data['alert'] = $this->createAlertInfo('Данные успешно обнавлены');
+        } else if ($this->input->get("do") == "remove") {
+            $this->user->delete($this->input->get("user_id"));
+            $data['alert'] = $this->createAlertInfo('Успешно удален');
+        }
+
+        $data['clientList'] = $this->user->getUserByAccess(100);
+        $data['content'] = $this->parser->parse('admin/administrators', $data, true);
+        $this->template($data);
+    }
+    
     public function addAdmin()
     {
         if ($this->user->myData['access'] != 100)
