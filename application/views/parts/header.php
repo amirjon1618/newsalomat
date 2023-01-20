@@ -2080,6 +2080,7 @@
         font-size: 14px;
         line-height: 16px;
         color: #A8A8A8;
+        display: flex;
     }
 
     .form-check {

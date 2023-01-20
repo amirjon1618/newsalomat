@@ -15,7 +15,17 @@
                             <?php if ($category_products['product_old_price'] != 0) : ?>
                                 <del><?= $category_products['product_old_price'] ?> смн.</del><?php endif; ?>
                         </span>
-                        <button onclick='addToCart(prod = <?= json_encode($category_products) ?>)' class="ps-btn ">В корзину</button>
+                        <?php if ($category_products['total_count_in_store'] > 0) : ?>
+                            <p class="ps-product__price sale prods_slider"> <span class="ps-product__price-span ">
+                                    <input class="form-control height50" id="count_input" type="number" value="1" style="display: none;">
+                                    <?php if ($category_products['product_old_price'] != 0) : ?><del><?= $category_products['product_old_price'] ?> </del><?php endif; ?>
+                                    <?= $category_products['product_price'] ?>c. </span><button onclick='addToCart(res = <?= json_encode($category_products) ?>)' class="ps-btn btn-cart_cat">В корзину</button>
+                            </p>
+                            <?php else :?>
+                            <p class="ps-product__price sale prods_slider">
+                                    <button onclick='addToCart(res = <?= json_encode($category_products) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 100%;">Нет в наличии</button>
+                            </p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </article>
@@ -114,8 +124,12 @@
                             </div>
 
                             <div style="display: flex; justify-content: flex-end;">
-                                <?php if ($category_products['product_old_price'] != 0) : ?>
-                                    <del class="ps-pp_db-del"><?= $category_products['product_old_price'] ?> смн.</del><?php endif; ?>
+                                <?php if ($category_products['total_count_in_store'] > 0) : ?>
+                                    <del class="ps-pp_db-del"><?= $category_products['product_old_price'] ?> смн.</del>
+                                    <?php else :?>
+                                        <del class="ps-pp_db-del"></del>
+                                <?php endif; ?>
+                                
                                 <div class="like-icon">
                                     <label>
                                         <input value="<?php $category_products['id'] ?>" <?php echo $category_products['is_favorite'] == 1 ?  'checked' : null  ?> type="checkbox" id="red">
@@ -125,9 +139,11 @@
                                     </label>
                                 </div>
                             </div>
-
-                            <h4 class="ps-product__price ps-pp_db"><?= $category_products['product_price'] ?> смн.</h4>
-                            <h4 class="ps-product__price ps-pp_dn">_ _._ _ смн.</h4>
+                            <?php if ($category_products['total_count_in_store'] > 0) : ?>
+                                    <h4 class="ps-product__price ps-pp_db"><?= $category_products['product_price'] ?> смн.</h4>
+                                <?php else :?>
+                                    <h4 class="ps-product__price ps-pp_dn">_ _._ _ смн.</h4>
+                            <?php endif; ?>                                
                             <div class="ps-product__desc">
                                 <?php if ($category_products['total_count_in_store'] > 0) : ?>
                                     <p class="global-product-exist"><strong>В наличии</strong></p>

@@ -47,7 +47,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="border-0 fw-bolder table-text-bold" style="font-weight: 500;">Стоимост товаров: </td>
-                                            <td class="border-0 table-text-end table-text-bold"><span class="number-currency"> </span><span class="text-currency"> смн.</span></td>
+                                            <td class="border-0 table-text-end table-text-bold number-currency_parent"><span class="number-currency"> </span><span class="text-currency"> смн.</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -57,7 +57,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="border-0 table-text-bold" style="font-weight: 500;">Итого: </td>
-                                            <td class="border-0 table-text-end table-text-bold"><span class="number-currency_total"> </span><span class="text-currency"> смн.</span></td>
+                                            <td class="border-0 table-text-end table-text-bold"><span class="number-currency_total"> </span><span class="text-currency2" style="color: #4a4ac3; font-weight: 500; font-size: 16px;"> смн.</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -298,6 +298,8 @@
                 result = totalSum - (discount * sum1 / 100);
                 $('.number-currency_total').text(`${Math.round(result)}`);
                 $('.promo-validate').css('display', 'none');
+                $('.number-currency').css({'color':'#ff0000', 'text-decoration':'line-through'});
+                $('.text-currency').css({'color':'#ff0000', 'text-decoration':'line-through'});
             },
             error: function(error) {
                 $('.promo-validate').css('display', 'block');

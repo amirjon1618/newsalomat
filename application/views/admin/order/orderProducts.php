@@ -31,12 +31,13 @@
                     <tr>
                         <th>Имя: <h4><?= $user_info[0]['name']?></h4></th>
                         <th>Номер телефона: <h4><?= $user_info[0]['login']?></h4></th>
+                        <th>Адрес: <h4><?= $user_info[0]['address']?></h4></th>
                     </tr>
                 </table>
             <?php endif; ?>
           <br />
           <table id="TableUser" class="table table-bordered table-hover">
-            <thead>
+            <thead><h3>Заказ</h3>
               <tr>
                 <th>ID Заказа</th>
                 <th>Имя товара</th>
@@ -51,8 +52,8 @@
                 <td><?= $item['order_id']?></td>
                 <td><?= $item['product_name']?></td>
                 <td><?= $item['total_count']?></td>
-                <td><?= $item['product_price']?></td>
-                <td><?= ($item['product_price'] * $item['total_count']) ?></td>
+                <td><?= $item['product_price']?> сом</td>
+                <td><?= ($item['product_price'] * $item['total_count']) ?> сом</td>
               </tr>
               <?php endforeach; ?>
             </tbody>
