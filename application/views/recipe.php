@@ -361,7 +361,7 @@
                 }
             },
             submitHandler:function(){
-                // sendSms();
+                sendSms();
                 $('#recipe_phone_div_phone_number').hide(); 
                 $('#recipe_phone_div_phone_code').show();
 
@@ -373,5 +373,4 @@
     validate_chekout();
     });
     
-  
 </script>
