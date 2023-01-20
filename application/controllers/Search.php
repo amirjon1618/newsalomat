@@ -51,7 +51,7 @@ class Search extends REST_Controller
 
         $result = [
             'data' => $data,
-            'productsd' => $newArray ?? []
+            'products' => $newArray ?? []
         ];
 
         $this->response($result, REST_Controller::HTTP_OK);
