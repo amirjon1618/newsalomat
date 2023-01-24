@@ -577,6 +577,136 @@ class Product extends CI_Model
         return $array;
     }
 
+    /**
+     * Product for admin searching
+     */
+    public function get_all_admin($current_page, $category_id = '', $brand_id = '', $price = '', $search_text = '', $export_status_sort = '')
+    {
+        //echo $current_page;
+        $array = array('base_url' => base_url());
+
+        $this->db->select("COUNT(*) as total_products");
+        $this->db->from('product');
+
+        if ($category_id != '') {
+            $this->db->join('category_product', 'category_product.product_id = product.id', 'left');
+            $this->db->where('category_product.category_id', $category_id);
+        }
+        if ($brand_id != '') {
+            $this->db->where('product_brand', $brand_id);
+        }
+        if ($search_text != '') {
+            $this->db->like('product_name', $search_text);
+        }
+        if ($export_status_sort != '') {
+            $this->db->where('product_status', $export_status_sort);
+        }
+
+        if ($price != '') {
+            $this->db->order_by('product_price', $price);
+        }
+
+        $qq = $this->db->get();
+        $total_pages = 0;
+
+        foreach ($qq->result_array() as $row) {
+            $array['total_products'] = $row['total_products'];
+            if ($row['total_products'] > 0)
+                $total_pages = ceil($row['total_products'] / $this->per_page_admin);
+        }
+        $linkk = base_url("index.php/admin/products/?");
+        $pages = array();
+
+        if ($category_id != '') {
+            $array['product_category_sort'] = $this->get_other_fields($category_id, 'category');
+            $linkk = $linkk . "category_sort=" . $category_id . '&';
+        }
+        if ($brand_id != '') {
+            $array['product_brand_sort'] = $this->get_other_fields($brand_id, 'brand');
+            $linkk = $linkk . "brand_sort=" . $brand_id . '&';
+        }
+        if ($price != '') {
+            $array['product_price_sort'] = $price;
+            $linkk = $linkk . "price_sort=" . $price . '&';
+        }
+        if ($export_status_sort != '') {
+            $array['export_status_sort'] = $export_status_sort;
+            $linkk = $linkk . "export_status_sort=" . $export_status_sort . '&';
+        }
+        $linkk = $linkk . "page=";
+        $array['link'] = $linkk;
+
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $current_page) {
+                $pages[] = array(
+                    "page" => $i,
+                    "current_page" => $current_page,
+                    "total_pages" => $total_pages,
+                    "base_url" => base_url(),
+                    "link" => $linkk,
+                    "current" => 'active'
+                );
+            } else {
+                $pages[] = array(
+                    "page" => $i,
+                    "current_page" => $current_page,
+                    "total_pages" => $total_pages,
+                    "base_url" => base_url(),
+                    "link" => $linkk,
+                    "current" => ''
+                );
+            }
+        }
+        $rr = $this->filter_pages($pages, $current_page);
+        $array['pages'] = $rr;
+
+
+        if ($current_page > 1 & $current_page <= $total_pages) {
+            $array['prev_page'] = $current_page - 1;
+        }
+        if ($current_page < $total_pages) {
+            $array['next_page'] = $current_page + 1;
+        }
+
+        if ($current_page <= $total_pages) {
+
+            $this->db->select("product.*");
+            $this->db->from('product');
+
+            if ($category_id != '') {
+                $this->db->join('category_product', 'category_product.product_id = product.id', 'left');
+                $this->db->where('category_product.category_id', $category_id);
+            }
+
+            if ($brand_id != '') {
+                $this->db->where('product_brand', $brand_id);
+            }
+
+            if ($search_text != '') {
+                $this->db->like('product_name', $search_text);
+            }
+            if ($export_status_sort != '') {
+                $this->db->where('product_status', $export_status_sort);
+            }
+
+            if ($price != '') {
+                $this->db->order_by('product_price', $price);
+            }
+            $this->db->limit($this->per_page_admin, ($current_page - 1) * $this->per_page_admin);
+
+            $query = $this->db->get();
+
+            foreach ($query->result_array() as $row) {
+                $row['base_url'] = base_url();
+                $array['products'][] = $row;
+            }
+        } else {
+            $array['products'] = [];
+        }
+
+        $array['total_pages'] = $total_pages;
+        return $array;
+    }
 
 
     public function get_img_by_id($id, $count = null)

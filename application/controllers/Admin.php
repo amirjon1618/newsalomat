@@ -1643,7 +1643,7 @@ class Admin extends CI_Controller
         if ($current_page == '' || $current_page < 0) {
             $current_page = 1;
         }
-        $list = $this->product->get_all(
+        $list = $this->product->get_all_admin(
             $current_page,
             $this->input->get('category_sort'),
             $this->input->get('brand_sort'),
