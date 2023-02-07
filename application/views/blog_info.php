@@ -95,7 +95,7 @@
                                         </p>
                                         <?php else :?>
                                         <p class="ps-product__price sale prods_slider">
-                                                <button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                                <button onclick='addToCart(res = <?= json_encode($prod_sugg) ?>)' class="btn-cart_cat-none" style="height: 36px; font-weight: bold; color: #ef5d70; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
                                         </p>
                                         <?php endif; ?>
                                     </div>

@@ -93,7 +93,7 @@
                                         </p>
                                         <?php else :?>
                                         <p class="ps-product__price sale prods_slider">
-                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="height: 36px; font-weight: bold; color: #ef5d70; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
                                         </p>
                                         <?php endif; ?>
                                     </div>
@@ -203,7 +203,7 @@
                                                 <?= $cat_p['product_price'] ?> c. </span><span class="ps-product__price ps-pp_dn">_ _._ _ смн.</span><button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="ps-btn btn-cart_cat bcc-custom">В корзину</button></p>
                                         <?php else :?>
                                         <p class="ps-product__price sale prods_slider we-not-have">
-                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="background-color: #ef5d70; height: 36px; color: #fff; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
+                                                <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="height: 36px; font-weight: bold; color: #ef5d70; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
                                         </p>
                                         <?php endif; ?>
                                     </div>

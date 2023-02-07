@@ -6573,7 +6573,7 @@ ba-btn {
 
 .ps-block--products-of-category .ps-product--simple {
     background-color: #fff;
-    width: 31%;
+    width: 44%;
     margin: 5px;
 }
 .main-loader_icon {
@@ -34405,6 +34405,7 @@ font-weight: bold;
 }
 .blog_about {
 overflow: hidden;
+display: -webkit-box;
 text-overflow: ellipsis;
 display: -moz-box;
 -moz-box-orient: vertical;
@@ -34418,6 +34419,7 @@ box-orient: vertical;
 }
 .blog_about-main {
 overflow: hidden;
+display: -webkit-box;
 text-overflow: ellipsis;
 display: -moz-box;
 -moz-box-orient: vertical;
@@ -34432,6 +34434,7 @@ color: #6D6D6D;
 }
 .blog_title {
 overflow: hidden;
+display: -webkit-box;
 text-overflow: ellipsis;
 display: -moz-box;
 -moz-box-orient: vertical;
@@ -34449,6 +34452,7 @@ color: #A8A8A8;
 
 .blog-articles-mini h3 {
 overflow: hidden;
+display: -webkit-box;
 text-overflow: ellipsis;
 display: -moz-box;
 -moz-box-orient: vertical;

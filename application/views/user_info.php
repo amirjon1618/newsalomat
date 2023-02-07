@@ -77,7 +77,7 @@
                                         <h2 class="pb-3">Личная информация</h2>
                                         <form action="{base_url}users/update_user_web" method="post" class="up-content-info_form">
                                             <div class="form-input col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <div class="form-group form-col">
+                                                <div class="form-col">
                                                     <label>Имя Фамилия <span class="red-star"> *</span></label>
                                                     <input class="form-control" maxlength="24" required name="name" value="<?php echo $name ?>" id="order_name" type="text" placeholder="Имя Фамилия">
                                                 </div>
@@ -160,10 +160,11 @@
                                                     <tbody>
                                                         <tr data-toggle="collapse" class="accordion-toggle">
                                                             <td class="table-id"><?php echo $order['order']->id; ?></td>
-                                                            <td><?php echo $order['order']->created_at;
+                                                            <td><?php $date = $order['order']->created_at;
+                                                                echo DateTime::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y'); 
                                                                 $price = 0;  ?></td>
 
-                                                            <td style="width: 170px;"><span class="label" style="display: flex; justify-content: center; padding: 5px 0px;color: #fff; display: flex; text-align: center; background:<?php
+                                                            <td style="width: 170px;"><span class="label" style="display: flex; white-space: nowrap; justify-content: center; padding: 5px 0px;color: #fff; display: flex; text-align: center; background:<?php
                                                                 if ($order['status'][0]->status_text == 'В ожидании') {
                                                                     echo '#ffcc00';
                                                                 };
@@ -185,7 +186,7 @@
                                                             <?php foreach ($order['products'] as $product) : ?>
                                                                 <?php $price = $price + $product->product_sold_price ?>
                                                             <?php endforeach; ?>
-                                                            <td class="text-success"><?php echo $order['order']->total_price ?></td>
+                                                            <td class="text-success"><?php echo $order['order']->total_price ?> смн.</td>
 
                                                             <td><img src="{base_url}img/arrow-down.svg" alt="Icon"></td>
                                                         </tr>
@@ -195,10 +196,17 @@
                                                                     <table class="table">
                                                                         <tbody>
                                                                             <tr>
-
                                                                                 <td colspan="6" class="hiddenRow">
                                                                                     <div class="accordian-body collapse" id="demo1">
                                                                                         <table class="table">
+                                                                                                <thead>
+                                                                                                    <tr style="border-bottom: 1px solid #E5E5E5;">
+                                                                                                        <th></th>
+                                                                                                        <th>Название</th>
+                                                                                                        <th>Кол.</th>
+                                                                                                        <th>Цена</th>
+                                                                                                    </tr>
+                                                                                                </thead>
                                                                                             <?php foreach ($order['products'] as $product) : ?>
                                                                                                 <tbody>
                                                                                                     <tr>
@@ -236,7 +244,13 @@
                                     <?php else : ?>
                                         <tbody>
                                             <tr>
-                                                <td>Заказов нет! </td>
+                                                <td><div class="board-show">
+                                                    <div class="toast-body" style="text-align:center;">
+                                                        <img class="mb-5" style="width: 100px" src="{base_url}img/up-cart.svg" alt="Cart">
+                                                        <h3 class="mb-3" style="color: #6D6D6D; font-size: 16px; ">У вас нет заказов</h3>
+                                                        <p>для совершения покупки воспользуйтесь каталогом товаров</p>
+                                                    </div>
+                                                </div></td>
                                             </tr>
                                         </tbody>
                                     <?php endif; ?>
@@ -312,6 +326,18 @@
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
+                                        <?php else : ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><div class="board-show">
+                                                    <div class="toast-body" style="text-align:center;">
+                                                        <img class="mb-5" style="width: 100px" src="{base_url}img/up-like.svg" alt="Cart">
+                                                        <h3 class="mb-3" style="color: #6D6D6D; font-size: 16px; ">У вас нет избранных</h3>
+                                                        <p>для добавления товаров в избранные воспользуйтесь каталогом товаров</p>
+                                                    </div>
+                                                </div></td>
+                                            </tr>
+                                        </tbody>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -532,11 +558,19 @@
         // console.dir(e.files[0].path);
         // var formdata = new FormData();
         // formdata.append("img", e.files[0], "url");
-        // var fReader = new FileReader();
-        // fReader.readAsDataURL(e.files[0]);
-        // fReader.onloadend = function(event) {
-        //     localStorage.setItem("user_icon", event.target.result);
-        //     document.querySelector("#user_icon").src = localStorage.getItem("user_icon");
+        var fReader = new FileReader();
+        fReader.readAsDataURL(e.files[0]);
+        fReader.onloadend = function(event) {
+            let image = event.target.result;
+            // alert(image);
+            let allImg = Array.from(document.querySelectorAll('#user_icon1'));
+            allImg.forEach(item =>{
+                item.src = image;
+            })
+        }
+            // localStorage.setItem("user_icon", event.target.result);
+            // document.querySelector("#user_icon").src = localStorage.getItem("user_icon");
+        
         const myFile = document.getElementById("input__file");
         var form = new FormData();
         form.append("img", myFile.files[0], `${myFile.files[0].name}`);
@@ -549,7 +583,7 @@
         fetch("{base_url}users/user_img?=save", requestOptions)
             .then(response => response.json())
             .then(result => {
-                window.location.reload()
+                // window.location.reload()
             })
     }
     // window.location.reload();
