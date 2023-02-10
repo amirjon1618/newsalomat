@@ -106,6 +106,7 @@
             </div>
         </div>
     </div>
+    
     <div class="ps-section--gray">
         <div class="container" style="padding: 0;">
             <?php foreach ($categories_for_main_page as $cat) : ?>
@@ -143,7 +144,7 @@
                         </div>
                     </div>
                     <div class="ps-block__slider main-sliders">
-                        <div style="height: 100%;" class="ps-carousel--product-box owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="500" data-owl-mousedrag="off">
+                        <div style="height: 100%;" class="ps-carousel--product-box owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="500" data-owl-mousedrag="off" data-type="banners">
                             <?php foreach ($cat['categ_slider'] as $cat_slider) : ?>
                                 <a href="<?= $cat_slider['slider_link'] ?>">
                                     <img style="height: 100%;" src="<?= $base_url ?>upload_banner/<?= $cat_slider['slider_pic'] ?>" alt="">
@@ -200,7 +201,7 @@
                                         <?php if ($cat_p['total_count_in_store'] > 0) : ?>
                                         <p class="ps-product__price sale prods_slider we-have"> <span class="ps-product__price-span pps-custom ps-pp_db">
                                                 <?php if ($cat_p['product_old_price'] != 0) : ?><del><?= $cat_p['product_old_price'] ?> </del><?php endif; ?>
-                                                <?= $cat_p['product_price'] ?> c. </span><span class="ps-product__price ps-pp_dn">_ _._ _ смн.</span><button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="ps-btn btn-cart_cat bcc-custom">В корзину</button></p>
+                                                <?= $cat_p['product_price'] ?> c. </span><button onclick='addToCart(res = <?= json_encode($cat_p) ?>)' class="ps-btn btn-cart_cat bcc-custom">В корзину</button></p>
                                         <?php else :?>
                                         <p class="ps-product__price sale prods_slider we-not-have">
                                                 <button onclick='addToCart(res = <?= json_encode($prod_of_the_day) ?>)' class="btn-cart_cat-none" style="height: 36px; font-weight: bold; color: #ef5d70; border: none; border-radius: 5px; width: 85%;">Нет в наличии</button>
@@ -308,9 +309,7 @@
 </div>
 
 <script>
-    if (window.innerWidth <= 991) {
-        window.history.pushState({}, '', '?type=2')
-    }
+    
     window.onload = () => {
         $(".main-loader_icon").css("display", "none")
     }
@@ -413,7 +412,7 @@
                        <span class="blog_created_at">${blogShow.blog_created_at.slice(0,10)}</span>
                        </a>
                      
-                     <div class="text-justify blog_about-main">${blogShow.blog_about}</div>
+                     <div class="text-justify blog_about-main">${blogShow.blog_about.split('\n')[0]}</div>
                      <a style="display: flex; justify-content: flex-end; padding-top: 10px;" href="{base_url}index.php/main/blogInfo?blog_id=${blogShow.id}"> читать дальше...</a>
                 `;
                 })
@@ -424,7 +423,7 @@
                     <a href="{base_url}index.php/main/blogInfo?blog_id=${blogShow.id}"><h3 class="blog_title">${blogShow.blog_title}</h3>
                     <span class="blog_created_at">${blogShow.blog_created_at.slice(0,10)}</span>
                     </a>
-                     <div class="text-justify blog_about">${blogShow.blog_about}</div>
+                     <div class="text-justify blog_about">${blogShow.blog_about.split('\n')[0]}</div>
                      <a href="{base_url}index.php/main/blogInfo?blog_id=${blogShow.id}" class="pb-4"> читать дальше...</a>
                 `;
                 })
@@ -576,3 +575,5 @@
         }
     }
 </style>
+
+

@@ -22,6 +22,7 @@ class Main extends CI_Controller
         $this->load->model('tag');
         $this->load->model('sms');
         $this->load->model('delivery');
+        $this->load->library('user_agent');
         // if (true) {
         // $this->techIssue();
         // } else {
@@ -127,7 +128,8 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $type = $this->input->get('type');
+        // $type = $this->input->get('type');
+        $type = $this->agent->is_mobile() ? 2 : 1;
         $data = array('base_url' => base_url(), 'alert' => '');
         $data['categories'] = $this->category->get_all();
         $data['main_slider'] = $this->slider->get_all('normal');
@@ -176,6 +178,7 @@ class Main extends CI_Controller
         $data['auth'] =   $this->input->cookie('auth_id');
         $data['header'] = $this->parser->parse('parts/header', $data, TRUE);
         $data['footer'] = $this->parser->parse('parts/footer', $data, TRUE);
+        $data['is_mobile'] = $type;
         $this->parser->parse('template', $data);
     }
 
