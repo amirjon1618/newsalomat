@@ -20,6 +20,7 @@ class Categories extends REST_Controller
         $this->load->helper('url');
         $this->load->model('user');
         $this->load->model('category');
+        $this->load->model('slider');
         $this->load->model('advertisement');
     }
 
@@ -89,4 +90,20 @@ class Categories extends REST_Controller
 
         $this->response($data, REST_Controller::HTTP_OK);
     }
+
+    // public function banners_get($type)
+    // {
+    //     $categories = $this->category->get_all();
+    //     $j = 0;
+    //     $array = array();
+    //     for ($i = 0; $i < sizeof($categories); $i++) {
+    //         if ($categories[$i]['category_in_main'] == 1 && $j < 3) {
+    //             $array[] = $this->slider->get_by_slider_category($categories[$i]['id'],$type??1);
+    //             // array_push($array, $this->slider->get_by_slider_category($categories[$i]['id'],$type??1));
+    //             $j++;
+    //         }
+    //     }
+
+    //     $this->response($array, REST_Controller::HTTP_OK);
+    // }
 }

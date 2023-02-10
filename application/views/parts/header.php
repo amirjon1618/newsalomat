@@ -1704,7 +1704,17 @@
         // let closeBtn = confirm("Вы уверены? Все введенные данные стираются!");
         // if (closeBtn) {
         // }
-        window.location.reload();
+        // window.location.reload();
+        $('.enter-btn-bg').css("display","none")
+        let all = Array.from(document.querySelectorAll('.enter-form_reg'));
+        all.forEach((item,id) => {
+            if(id === 0){
+                item.style.display = "block"
+                $('.enter-form_reg input[type=number]').val('');
+            }else{
+                item.style.display = "none"
+            }
+        })
     }
     // $('.form-detail_validate').val('');
         // removeAll();
