@@ -35,10 +35,9 @@
                         <div class="form-group">
                             <label>Тип рассылки</label>
                             <select id="type" name="type" class="form-control" required>
-                                <option value="0">Выберите</option>
+                                <option value="events">События</option>
                                 <option value="holidays">Праздники</option>
                                 <option value="promotions">Акции</option>
-                                <option value="events">События</option>
                             </select>
                         </div>
                         <p class="validate-text"></p>
