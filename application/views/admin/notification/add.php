@@ -46,9 +46,16 @@
                             <input type="file" name="userfile" class="file_inp" size="50" />
                             <i class="fa fa-times fa_cancel_file" onclick="cancel_file_input()"></i>
                         </div>
-                        <div class="box-footer">
-                            <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
-                            <input type="submit" name="AddBtn" value="Создать" class="btn btn-primary pull-right" />
+                        <div class="" style="display:flex; justify-content: space-between;">
+                            <!-- <div> -->
+                                <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
+                            <!-- </div> -->
+                            <div style="display:flex; align-items: center;">
+                                <div style="margin-right: 20px; display:flex; align-items: center;">
+                                    <input type="checkbox" checked  name="send"><span style="margin-left: 8px;">Отправить уведомления</span>
+                                </div>
+                                <input type="submit" name="AddBtn" value="Создать" class="btn btn-primary pull-right" />
+                            </div>
                         </div>
                     </form>
                 </div><!-- /.box-body -->

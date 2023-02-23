@@ -35,7 +35,7 @@
                                 <th>Текст сообщения</th>
                                 <th>Тип рассылки</th>
                                 <th>Фото для рассылки</th>
-                                <th style="text-align: center;">Отправить</th>
+                                <th style="text-align: center;">Статус уведомления</th>
                                 <th style="text-align: center;">Изменить</th>
                                 <th style="text-align: center;">Удалить</th>
                             </tr>
@@ -70,9 +70,21 @@
                                 <td style="text-align: center;width: 256px;"><a target="_blank" href="<?= $base_url ?>img/icons/<?= $item['img']?>"><img src="{base_url}img/icons/<?= $item['img']?>" style="width: 100px; border-radius: 10px;" /></a></td>
 
                                 <td  style="text-align: center;width: 100px;">
-                                    <a class="btn" onclick="sendNotification(<?= $item['id']?>)">
-                                        <i style="font-size: 24px;" class="fa fa-paper-plane"> </i>
-                                    </a>
+                                <span class="label" style="font-size: 16px; color:
+                                    <?php
+                                    if ($item['is_sended']){
+                                        echo '#199b10';
+                                    } else {
+                                        echo '#ff0000';
+
+                                    }?>
+                                ; border-radius: 5px;"> <?php
+                                    if ($item['is_sended']){
+                                        echo 'Отправлено';
+                                    } else {
+                                        echo 'Не отправлено';
+
+                                    }?></span>
                                 </td>
                                 <td  style="text-align: center;width: 100px;">
                                     <a  href="<?= $base_url ?>index.php/admin/editNotification/<?= $item['id']?>">
