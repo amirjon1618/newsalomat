@@ -273,7 +273,6 @@ class Admin extends CI_Controller
             $img = $this->upload->data();
             $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "type" => $this->input->post("type"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now, "is_sended" => $this->input->post('send') ? 1 : 0);
             $data = $this->notification->add($dd);
-            // return var_dump($data);
 
             if ($this->input->post('send')) {
                 $image = base_url()."img/icons/".$this->data['img'];
@@ -287,7 +286,7 @@ class Admin extends CI_Controller
                 foreach ($users as $user){
                     $tokens[] = $user['onesignal_id'];
                 }
-                $result = PushNotifications::send($tokens,$data['name'],$data['description'],$image,$data['id'],$data['type']);
+                $result = PushNotifications::send($tokens,$dd['name'],$dd['description'],$image,$dd['id'],$dd['type']);
             }
 
             redirect(base_url("index.php/admin/notification?do=addok"));

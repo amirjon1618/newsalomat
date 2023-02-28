@@ -46,7 +46,7 @@
                             <input type="file" name="userfile" class="file_inp" size="50" />
                             <i class="fa fa-times fa_cancel_file" onclick="cancel_file_input()"></i>
                         </div>
-                        <div class="" style="display:flex; justify-content: space-between;">
+                        <div class="" style="display:flex; justify-content: space-between; padding-top: 20px;">
                             <!-- <div> -->
                                 <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
                             <!-- </div> -->

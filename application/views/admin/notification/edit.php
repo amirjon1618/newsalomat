@@ -20,21 +20,21 @@
                 <form role="form" action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Наименование  рассылки</label>
-                            <input type="text" id="name" name="name" required class="form-control" placeholder="Вводите ...">
+                            <input type="text" id="name" name="name" required class="form-control" placeholder="Вводите ..." value="<?php echo $notification['name'] ?>">
                         </div>
                         <p class="validate-text"></p>
                         <div class="form-group">
                             <label>Текст сообщения</label>
-                            <textarea class="recipe_comment form-control" required minlength="3" maxlength="250" name="description" id="description" type="text" placeholder="Вводите ..." style="height: 95px;"></textarea>
+                            <textarea class="recipe_comment form-control" required minlength="3" maxlength="250" name="description" id="description" type="text" placeholder="Вводите ..." style="height: 95px;" ><?php echo $notification['description'] ?></textarea>
                             <!-- <textarea type="text" id="description" name="description" class="form-control" placeholder="Вводите ..."> -->
                             <p class="validate-text"></p>
                         </div>
                         <div class="form-group">
                             <label>Тип рассылки</label>
                             <select id="type" name="type" class="form-control" required>
-                                <option value="events">События</option>
-                                <option value="holidays">Праздники</option>
-                                <option value="promotions">Акции</option>
+                                <option value="events" <?php echo $notification['type'] === 'events' ? 'selected' : '' ?>>События</option>
+                                <option value="holidays" <?php echo $notification['type'] === 'holidays' ? 'selected' : '' ?>>Праздники</option>
+                                <option value="promotions" <?php echo $notification['type'] === 'promotions' ? 'selected' : '' ?>>Акции</option>
                             </select>
                         </div>
                         <p class="validate-text"></p>
@@ -43,9 +43,16 @@
                             <input type="file" name="userfile" class="file_inp" size="50" />
                             <i class="fa fa-times fa_cancel_file" onclick="cancel_file_input()"></i>
                         </div>
-                        <div class="box-footer">
-                            <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
-                            <input type="submit" name="AddBtn" value="Создать" class="btn btn-primary pull-right" />
+                        <div class="" style="display:flex; justify-content: space-between; padding-top: 20px;">
+                            <!-- <div> -->
+                                <button type="button" onclick="javascript:window.location.href='{base_url}index.php/admin/notification'" class="btn btn-default">Отмена</button>
+                            <!-- </div> -->
+                            <div style="display:flex; align-items: center;">
+                                <div style="margin-right: 20px; display:flex; align-items: center;">
+                                    <input type="checkbox" <?php echo $notification['type'] ? 'checked' : '' ?> name="send"><span style="margin-left: 8px;">Отправить уведомления</span>
+                                </div>
+                                <input type="submit" name="AddBtn" value="Измпенить" class="btn btn-primary pull-right" />
+                            </div>
                         </div>
                     </form>
                 </div><!-- /.box-body -->
