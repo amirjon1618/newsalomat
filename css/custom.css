@@ -1175,6 +1175,7 @@ button {
    border-style: solid;
    font-size: 14px;
    line-height: 1.4285714286;
+   white-space: nowrap;
 }
 
 .file_upload_div {
