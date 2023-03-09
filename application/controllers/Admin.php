@@ -271,11 +271,27 @@ class Admin extends CI_Controller
             }
 
             $img = $this->upload->data();
-            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "type" => $this->input->post("type"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now);
-            $this->notification->add($dd);
-            redirect(base_url("index.php/admin/notification?do=addok"));
+            $dd = array("name" => $this->input->post("name"), "description" => $this->input->post("description"), "type" => $this->input->post("type"), "img" => $img['file_name'], "created_at" => $now, 'updated_at' => $now, "is_sended" => $this->input->post('send') ? 1 : 0);
+            $data = $this->notification->add($dd);
 
+            if ($this->input->post('send')) {
+                $image = base_url()."img/icons/".$this->data['img'];
+                $this->db->select("*");
+                $this->db->from('users');
+                $this->db->where("onesignal_id !=", NULL);
+                $this->db->where("access =", "10");
+                $query = $this->db->get();
+                $users = $query->result_array();
+                $tokens = [];
+                foreach ($users as $user){
+                    $tokens[] = $user['onesignal_id'];
+                }
+                $result = PushNotifications::send($tokens,$dd['name'],$dd['description'],$image,$dd['id'],$dd['type']);
+            }
+
+            redirect(base_url("index.php/admin/notification?do=addok"));
         }
+
         $data['content'] = $this->parser->parse('admin/notification/add', $data, true);
         $this->template($data);
     }

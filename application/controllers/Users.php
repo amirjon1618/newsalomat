@@ -585,7 +585,7 @@ class Users extends REST_Controller
             $now = date('Y-m-d H:i');
             $sms_id = $this->sms->add_phone(array('phone' => $this->input->post("phone") ?? $phone, 'confirm_code' => $rand_num, 'qty' => 1, 'created_at' => $now, 'updated_at' => $now));
             $this->create_url_f55($this->input->post("phone") ?? $phone, $rand_num, $sms_id);
-            $this->response($rand_num);
+            $this->response($array);
         } else {
             echo json_encode(-1);
         }
